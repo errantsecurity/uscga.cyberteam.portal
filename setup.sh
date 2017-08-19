@@ -46,9 +46,9 @@ function build_training_wheels(){
 	echo "training wheels"
 }
 
+
 function configure_nginx(){
 
-	
 	sudo rm -f /etc/nginx/sites-enabled/default
 	sudo touch /etc/nginx/sites-available/flask-settings
 	sudo ln -f -s /etc/nginx/sites-available/flask-settings \
@@ -66,6 +66,29 @@ EOF
 }
 
 
+function configure_docker(){
+
+	# Add ourselves to the Docker group. We have to log back in and out
+	# to ensure we are running with the correct credentials..
+	usermod -aG docker `logname`
+	cd training_wheels
+
+	docker build -t johnhammond/training_wheels .
+
+	cd ..
+
+
+}
+
+function configure_gotty(){
+	cat <<EOF > ~/.gotty
+preferences {
+    font_size = 14
+}
+EOF
+
+}
+
 function prepare_gunicorn(){
 
 	# Make sure to run the app as a regular user. We shouldn't have to be
@@ -77,4 +100,5 @@ function prepare_gunicorn(){
 
 install_dependencies
 configure_nginx
+configure_gotty
 prepare_gunicorn

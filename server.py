@@ -14,7 +14,7 @@ from werkzeug.utils import secure_filename
 import convert
 import socket
 
-
+subprocess.call( 'pkill gotty'.split() )
 
 DATABASE="database.db"
 UPLOAD_FOLDER = 'static/uploads'
@@ -30,6 +30,10 @@ login_manager.login_view = '/login'
 login_manager.login_message_category = 'warn'
 
 server_ip = ""
+
+# Kick-start the Training Wheels shell
+subprocess.Popen( str('gotty -w --reconnect -p 9000 docker run -it johnhammond/training_wheels').split() )
+
 def get_server_ip():
 	global server_ip
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -140,12 +144,9 @@ def user_login( email ):
 	shutil.copy( os.getcwd() + '/vagrant/Vagrantfile', flask_login.current_user.vm_path )
 	
 	turn_on_user_virtual_machine()
-	# launch_user_virtual_machine()
 
 def turn_on_user_virtual_machine():
 	subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' ' + os.path.join(os.getcwd(), 'run_vm.sh') + ' ' + flask_login.current_user.vm_path ).split(), cwd = flask_login.current_user.vm_path )
-
-
 
 
 @login_manager.user_loader
@@ -737,6 +738,16 @@ def login():
 
 	return flask.render_template( 'login.html', email = email, password = password)
 
+
+@app.route('/training_wheels')
+@flask_login.login_required
+def training_wheels():
+	global server_ip
+
+	return flask.render_template('training_wheels.html', server_ip=server_ip )
+
+
+
 @app.route('/logout')
 @flask_login.login_required
 def logout():
@@ -751,5 +762,5 @@ def index():
 
 if ( __name__ == "__main__" ):
 
-	subprocess.call( 'pkill gotty'.split() )
 	app.run( debug=True, host='0.0.0.0' )
+	

@@ -1,0 +1,19 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> Training Wheels </h1>
+<p>
+	If this is your first time with the Cyber Team and you feel like you don't know where to start, the Training Wheels shell will get you up to speed! Training Wheels will guide you through some simple command-line 
+</p>
+
+
+<a target="_blank" style='color:gray;' href="http://{{server_ip}}:9000/" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=850,height=400,toolbar=1,resizable=0'); return false;" style="padding-bottom: 5px;">New Window</a>
+<iframe id="shell" src="http://{{server_ip}}:9000/">Training Wheels is not currently running. You should tell someone to help! </iframe>
+<br><br>
+<hr> 
+<p>
+	I have had the best luck copying-and-pasting in <a href="https://www.google.com/chrome/index.html">Google Chrome</a>.
+</p>
+
+{% endblock %}
