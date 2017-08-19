@@ -91,12 +91,25 @@ EOF
 
 function prepare_gunicorn(){
 
+	cat <<EOF > /etc/init/the_portal.conf
+description "Gunicorn Flask server running the USCGA Cyber Team Portal."
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+setuid user
+setgid www-data
+
+env PATH=/home/cyberteam/portal/
+chdir /home/cyberteam/portal
+exec gunicorn server:app
+EOF
+
 	# Make sure to run the app as a regular user. We shouldn't have to be
 	# root...
-	su `logname` -c "gunicorn server:app"
+	su `logname` -c "gunicorn server:app &"
 }
-
-
 
 install_dependencies
 configure_nginx
