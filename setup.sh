@@ -11,7 +11,7 @@
 
 DEPENDENCIES="python python-pip git vagrant docker python-markdown \
 python-software-properties nodejs linuxbrew-wrapper nginx python-flask \
-gunicorn"
+gunicorn python-passlib"
 
 
 # Ensure you are root!
