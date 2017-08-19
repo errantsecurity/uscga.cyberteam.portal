@@ -143,11 +143,11 @@ def user_login( email ):
 	launch_user_virtual_machine()
 
 def turn_on_user_virtual_machine():
-	subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' vagrant up --provision').split(), cwd = flask_login.current_user.vm_path )
+	subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' vagrant up --provision && vagrant ssh').split(), cwd = flask_login.current_user.vm_path )
 
-def launch_user_virtual_machine():
-	subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' vagrant ssh').split(), 
-		cwd = flask_login.current_user.vm_path )
+# def launch_user_virtual_machine():
+# 	subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' vagrant ssh').split(), 
+		# cwd = flask_login.current_user.vm_path )
 
 
 
@@ -705,7 +705,6 @@ def shell():
 	global server_ip
 
 	turn_on_user_virtual_machine()
-	launch_user_virtual_machine()
 
 	return flask.render_template('shell.html', server_ip=server_ip, port=str(8080+flask_login.current_user.id))
 
