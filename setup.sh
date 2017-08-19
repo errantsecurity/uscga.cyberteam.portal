@@ -53,7 +53,7 @@ function configure_nginx(){
 	sudo ln -f -s /etc/nginx/sites-available/flask-settings \
 			   /etc/nginx/sites-enabled/flask-settings
 
-	cat <<EOF > /etc/nginx/sites-enabled/flask_settings
+	cat <<EOF>/etc/nginx/sites-enabled/flask-settings
 server {
 		location / {
 				proxy_pass http://127.0.0.1:8000;
