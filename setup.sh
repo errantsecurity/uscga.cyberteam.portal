@@ -35,7 +35,7 @@ function install_dependencies(){
 	chown root:root `which brew`
 
 	# Have brew install gotty
-	runuser -l $USER -s "brew install yudai/gotty/gotty"
+	brew install yudai/gotty/gotty
 	export PATH=$PATH:$HOME/.linuxbrew/bin/
 	echo "export PATH=$PATH:$HOME/.linuxbrew/bin/" >> ~/.bashrc
 
@@ -47,9 +47,9 @@ function install_dependencies(){
 function configure_nginx(){
 
 	sudo /etc/init.d/nginx start
-	sudo rm /etc/nginx/sites-enabled/default
+	sudo rm -f /etc/nginx/sites-enabled/default
 	sudo touch /etc/nginx/sites-available/flask-settings
-	sudo ln -s /etc/nginx/sites-available/flask-settings \
+	sudo ln -f -s /etc/nginx/sites-available/flask-settings \
 			   /etc/nginx/sites-enabled/flask-settings
 
 	cat <<EOF > /etc/nginx/sites-enabled/flask_settings
