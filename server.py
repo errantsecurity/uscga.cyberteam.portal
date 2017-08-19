@@ -124,7 +124,7 @@ def user_login( email ):
 	if not os.path.exists(flask_login.current_user.vm_path): os.makedirs(flask_login.current_user.vm_path)
 
 	# Copy the file if we don't need to do any special provisioning
-	shutil.copy( '/home/john/portal/vagrant/Vagrantfile', flask_login.current_user.vm_path )
+	shutil.copy( os.getcwd() + '/vagrant/Vagrantfile', flask_login.current_user.vm_path )
 	
 	turn_on_user_virtual_machine()
 	launch_user_virtual_machine()
