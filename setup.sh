@@ -9,12 +9,13 @@
 
 DEPENDENCIES="python python-pip git vagrant docker python-markdown"
 
+
+# Ensure you are root!
 if [ $UID -ne 0 ]
 then
 	echo "You must run this script as root!"
 	exit
 fi
 
-sudo apt-get update && sudo apt-get -y $DEPENDENCIES
-
-python -c "Python works okay!"
+# Install dependencies...
+sudo apt-get update && sudo apt install -y $DEPENDENCIES
