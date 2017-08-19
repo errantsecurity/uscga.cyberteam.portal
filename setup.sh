@@ -47,7 +47,7 @@ function install_dependencies(){
 
 function configure_nginx(){
 
-	sudo /etc/init.d/nginx start
+	
 	sudo rm -f /etc/nginx/sites-enabled/default
 	sudo touch /etc/nginx/sites-available/flask-settings
 	sudo ln -f -s /etc/nginx/sites-available/flask-settings \
@@ -61,7 +61,7 @@ server {
 }
 EOF
 
-	sudo /etc/init.d/nginx start
+	sudo service nginx restart
 }
 
 
