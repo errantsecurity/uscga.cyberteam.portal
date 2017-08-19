@@ -101,4 +101,5 @@ function prepare_gunicorn(){
 install_dependencies
 configure_nginx
 configure_gotty
+configure_docker
 prepare_gunicorn
