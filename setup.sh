@@ -32,10 +32,10 @@ function install_dependencies(){
 
 	# Brew will only install things if it is owned by root, so...
 	# Kinda silly, but we've gotta do it.
-	sudo chown -R `logname` /usr/local
+	
 
 	# Have brew install gotty
-	su `logname` -c brew install yudai/gotty/gotty
+	su `logname` -c "brew install yudai/gotty/gotty"
 	export PATH=$PATH:$HOME/.linuxbrew/bin/
 	echo "export PATH=$PATH:$HOME/.linuxbrew/bin/" >> ~/.bashrc
 	
