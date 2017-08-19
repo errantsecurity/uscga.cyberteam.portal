@@ -121,7 +121,7 @@ def user_login( email ):
 	flask.flash("Hello " + user.name.split()[0] + "!", 'success')
 	flask_login.login_user(user)
 
-	if not os.path.exists(flask_login.current_user.vm_path): os.mkdirs(flask_login.current_user.vm_path)
+	if not os.path.exists(flask_login.current_user.vm_path): os.makedirs(flask_login.current_user.vm_path)
 
 	# Copy the file if we don't need to do any special provisioning
 	shutil.copy( '/home/john/portal/vagrant/Vagrantfile', flask_login.current_user.vm_path )
