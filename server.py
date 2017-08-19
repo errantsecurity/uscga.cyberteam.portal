@@ -740,6 +740,8 @@ def logout():
 def index(): 
 	return flask.render_template( "index.html" )
 
-subprocess.call( 'pkill gotty'.split() )
-# app.run(debug=True, port=8000)
-app.run( host='0.0.0.0', debug=True )
+if ( __name__ == "__main__" ):
+	
+	subprocess.call( 'pkill gotty'.split() )
+	# app.run(debug=True, port=8000)
+	app.run( host='0.0.0.0', debug=True )
