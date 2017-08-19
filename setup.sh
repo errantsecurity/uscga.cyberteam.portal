@@ -32,7 +32,7 @@ function install_dependencies(){
 
 	# Brew will only install things if it is owned by root, so...
 	# Kinda silly, but we've gotta do it.
-	chown root:root `which brew`
+	sudo chown -R $USER /usr/local
 
 	# Have brew install gotty
 	brew install yudai/gotty/gotty
