@@ -10,7 +10,8 @@
 
 
 DEPENDENCIES="python python-pip git vagrant docker python-markdown \
-python-software-properties nodejs linuxbrew-wrapper nginx python-flask"
+python-software-properties nodejs linuxbrew-wrapper nginx python-flask \
+gunicorn"
 
 
 # Ensure you are root!
@@ -27,12 +28,14 @@ function install_dependencies(){
 	# Install dependencies...
 	apt-get update && sudo apt install -y $DEPENDENCIES
 
+	# Get flask login...
+	pip install flask_login
+
 	# Let brew configure itself
 	echo "" | brew
 
 	# Brew will only install things if it is owned by root, so...
 	# Kinda silly, but we've gotta do it.
-	
 
 	# Have brew install gotty
 	su `logname` -c "brew install yudai/gotty/gotty"
@@ -64,6 +67,11 @@ EOF
 	sudo /etc/init.d/nginx start
 }
 
+
+function prepare_gunicorn(){
+
+	gunicorn server:app
+}
 
 install_dependencies
 configure_nginx
