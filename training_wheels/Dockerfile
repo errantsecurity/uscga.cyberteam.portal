@@ -2,7 +2,7 @@ FROM python:2
 
 
 RUN apt-get update
-RUN apt-get install -y python-pip manpages manpages-dev freebsd-manpages funny-manpages gmt-manpages man2html manpages-posix manpages-posix-dev asr-manpages
+RUN apt-get install -y python-pip manpages manpages-dev freebsd-manpages 
 
 RUN pip install colorama 
 
