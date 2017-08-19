@@ -16,9 +16,11 @@ USER uscga
 
 COPY ./ /home/uscga
 
-RUN chmod -R 755 /home/uscga
-RUN chmod 755 /home/uscga/training_wheels
+RUN chmod -R 777 /home/uscga
+RUN chmod 777 /home/uscga/training_wheels
 RUN chown uscga:uscga /home/uscga/*
+RUN chown uscga:uscga /home/uscga/shell/
+RUN chown uscga:uscga /home/uscga/shell/
 
 WORKDIR /home/uscga
 
