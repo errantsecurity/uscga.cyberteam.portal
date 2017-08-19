@@ -32,7 +32,7 @@ login_manager.login_message_category = 'warn'
 server_ip = ""
 
 # Kick-start the Training Wheels shell
-subprocess.Popen( str('gotty -w --reconnect -p 9000 docker run -it johnhammond/training_wheels').split() )
+subprocess.Popen( str('gotty -w --reconnect -p 9000 docker run -it training_wheels').split() )
 
 def get_server_ip():
 	global server_ip
