@@ -34,9 +34,6 @@ function install_dependencies(){
 	# Let brew configure itself
 	echo "" | brew
 
-	# Brew will only install things if it is owned by root, so...
-	# Kinda silly, but we've gotta do it.
-
 	# Have brew install gotty
 	su `logname` -c "brew install yudai/gotty/gotty"
 	export PATH=$PATH:$HOME/.linuxbrew/bin/
@@ -69,6 +66,8 @@ function prepare_gunicorn(){
 
 	gunicorn server:app
 }
+
+
 
 install_dependencies
 configure_nginx
