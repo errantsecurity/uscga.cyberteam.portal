@@ -35,9 +35,9 @@ function install_dependencies(){
 	chown root:root `which brew`
 
 	# Have brew install gotty
-	sudo brew install yudai/gotty/gotty
-	export PATH=$PATH:/home/john/.linuxbrew/bin/
-	echo "export PATH=$PATH:/home/john/.linuxbrew/bin/" >> ~/.bashrc
+	brew install yudai/gotty/gotty
+	export PATH=$PATH:$HOME/.linuxbrew/bin/
+	echo "export PATH=$PATH:$HOME/.linuxbrew/bin/" >> ~/.bashrc
 
 
 	
