@@ -140,7 +140,7 @@ def user_login( email ):
 	shutil.copy( os.getcwd() + '/vagrant/Vagrantfile', flask_login.current_user.vm_path )
 	
 	turn_on_user_virtual_machine()
-	launch_user_virtual_machine()
+	# launch_user_virtual_machine()
 
 def turn_on_user_virtual_machine():
 	# subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' vagrant up --provision && vagrant ssh').split(), cwd = flask_login.current_user.vm_path )
