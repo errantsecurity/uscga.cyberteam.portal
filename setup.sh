@@ -31,10 +31,35 @@ function install_dependencies(){
 	echo "" | brew
 
 	# Have brew install gotty
-	brew install yudai/gotty/gotty
+	sudo brew install yudai/gotty/gotty
 	export PATH=$PATH:/home/john/.linuxbrew/bin/
 	echo "export PATH=$PATH:/home/john/.linuxbrew/bin/" >> ~/.bashrc
 
 }
 
+
+function configure_nginx(){
+
+	sudo /etc/init.d/nginx start
+	sudo rm /etc/nginx/sites-enabled/default
+	sudo touch /etc/nginx/sites-available/flask-settings
+	sudo ln -s /etc/nginx/sites-available/flask-settings \
+			   /etc/nginx/sites-enabled/flask-settings
+
+	cat <<EOF > /etc/nginx/sites-enabled/flask_settings
+server {
+		location / {
+				proxy_pass http://127.0.0.1:8000;
+
+				proxy_set_header Host $header;
+				proxy_set_header X-Real-IP $remote_addr;
+		}
+}
+EOF
+
+	sudo /etc/init.d/nginx start
+}
+
+
 install_dependencies
+configure_nginx
