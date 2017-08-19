@@ -30,7 +30,6 @@ login_manager.login_view = '/login'
 login_manager.login_message_category = 'warn'
 
 server_ip = ""
-
 def get_server_ip():
 	global server_ip
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -38,6 +37,8 @@ def get_server_ip():
 	server_ip = s.getsockname()[0]
 	s.close()
 	return server_ip
+
+server_ip = get_server_ip()
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -701,6 +702,7 @@ def writeups():
 @app.route('/shell')
 @flask_login.login_required
 def shell(): 
+	global server_ip
 
 	turn_on_user_virtual_machine()
 	launch_user_virtual_machine()
