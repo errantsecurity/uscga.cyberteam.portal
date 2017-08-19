@@ -12,12 +12,13 @@ ENV HOSTNAME cyberteam
 ENV HOST cyberteam
 
 RUN useradd -m uscga
+USER uscga
 
 COPY ./ /home/uscga
-RUN chmod -R 750 /home/uscga
-RUN chmod 755 /home/uscga/training_wheels
 
-USER uscga
+RUN chmod -R 755 /home/uscga
+RUN chmod 755 /home/uscga/training_wheels
+RUN chown uscga:uscga /home/uscga/*
 
 WORKDIR /home/uscga
 
