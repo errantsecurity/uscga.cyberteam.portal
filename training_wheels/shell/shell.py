@@ -47,8 +47,10 @@ class TrainingWheelsShellClass():
 		# Have to run it this way so the line handling happens correctly...
 		os.system("sudo passwd guest")
 
-	def yes_faked(self, argument = "y"):
+	def yes_faked(self, argument = None):
 		while( True ):
+			if argument = "":
+				argument = "y"
 			sys.stdout.write( self.LessonBook.something_to_say_inbetween )
 			print(argument)
 			time.sleep(0.05)
