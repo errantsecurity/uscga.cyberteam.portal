@@ -67,8 +67,9 @@ EOF
 
 function prepare_gunicorn(){
 
-	gunicorn server:app
+	gunicorn server:app &
 }
 
 install_dependencies
 configure_nginx
+prepare_gunicorn
