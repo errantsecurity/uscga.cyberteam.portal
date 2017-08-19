@@ -12,6 +12,8 @@ import subprocess
 import json
 from werkzeug.utils import secure_filename
 import convert
+import socket
+
 
 
 DATABASE="database.db"
@@ -26,6 +28,16 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = '/login'
 login_manager.login_message_category = 'warn'
+
+server_ip
+
+def get_server_ip():
+	global server_ip
+	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	s.connect(("8.8.8.8", 80))
+	server_ip = s.getsockname()[0]
+	s.close()
+	return server_ip
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -693,7 +705,7 @@ def shell():
 	turn_on_user_virtual_machine()
 	launch_user_virtual_machine()
 
-	return flask.render_template('shell.html', port=str(8080+flask_login.current_user.id))
+	return flask.render_template('shell.html', server_ip=server_ip, port=str(8080+flask_login.current_user.id))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
