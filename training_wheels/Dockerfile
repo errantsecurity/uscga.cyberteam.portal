@@ -17,6 +17,8 @@ COPY ./ /home/uscga
 RUN chmod -R 750 /home/uscga
 RUN chmod 755 /home/uscga/training_wheels
 
+
 WORKDIR /home/uscga
+USER uscga
 
 CMD ["/home/uscga/training_wheels"]

@@ -13,7 +13,7 @@
 "message" : '''
 
 You should notice, by now, that each path in Linux is built off of by forward-slashes, 
-"/". You are in the /home/pi folder, which all bases off the "root" directory. 
+"/". You are in the /home/uscga folder, which all bases off the "root" directory. 
 
 The "root" directory is the uppermost-level of the Linux filsystem. It is actually
 denoted by a single forward-slash "/". Try changing directory to there: "cd /"

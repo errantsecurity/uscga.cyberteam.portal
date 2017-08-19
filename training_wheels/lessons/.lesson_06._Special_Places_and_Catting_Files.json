@@ -81,7 +81,7 @@
     },
     {
       "tag": "You can display a file on standard output with the `cat` command.",
-      "message": "\n\rYou got it! Did you see all that output? Scroll up as you need to.\n\r\n\rSo this probably looks like a lot of nonsense to you right now -- which is okay.\n\rBut it does show some interesting information that you should totally understand at\n\rthis point. See your username on one line? The `pi` account.\n\r\n\rYou can see the absolute path to your home directory, `/home/pi` and you \n\rcan even see the shell you use: `bash`. Remember those binaries are stored in\n\r/bin and /usr/bin?\n\r\n\rOnce you are all done looking and ready to move on, cd to `/tmp`\n\r",
+      "message": "\n\rYou got it! Did you see all that output? Scroll up as you need to.\n\r\n\rSo this probably looks like a lot of nonsense to you right now -- which is okay.\n\rBut it does show some interesting information that you should totally understand at\n\rthis point. See your username on one line? The `uscga` account.\n\r\n\rYou can see the absolute path to your home directory, `/home/uscga` and you \n\rcan even see the shell you use: `bash`. Remember those binaries are stored in\n\r/bin and /usr/bin?\n\r\n\rOnce you are all done looking and ready to move on, cd to `/tmp`\n\r",
       "command_waiting": "cd /tmp",
       "incorrect": "Use an absolute path to cd to the /tmp directory."
     },

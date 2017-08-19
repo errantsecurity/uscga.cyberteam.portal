@@ -38,7 +38,7 @@ somewhere in the filesystem. You can see it is very similar to that blue text th
 you will see in your prompt. Your prompt typically shows where you are in the file
 system, so you don't have to run `pwd` all the time.
 
-Note the only difference: the `pwd` output starts with `/home/pi` while the
+Note the only difference: the `pwd` output starts with `/home/uscga` while the
 blue text in your prompt starts with a `~` tilde instead. Do you see it?
 
 
@@ -99,7 +99,7 @@ Now the blue text in your prompt should have changed! You're currently at that
 
 "message" : '''
 
-Now it says you are at the `/home/pi` directory!
+Now it says you are at the `/home/uscga` directory!
 
 So in Linux, this is your HOME directory. You can think of it as like your
 "My Documents" folder in Windows -- it is where all of your own personal 
@@ -123,7 +123,7 @@ Try running `whoami`.
 
 "message" : '''
 
-You are "pi"! That's why your HOME directory is in /home/pi. The last part
+You are "uscga"! That's why your HOME directory is in /home/uscga. The last part
 of it is your username, to denote that it is YOUR home directory.
 
 And we got here from that ~ tilde character. That means the ~ character
@@ -189,7 +189,7 @@ Now try running `cd` one more time. Enter just `cd`, no arguments.
 
 See your prompt changed! When you run `cd` without any arguments, it takes 
 you back to your home directory, the ~. Before, when you were already there,
-it didn't look like you moved anywhere -- but you did go back to /home/pi.
+it didn't look like you moved anywhere -- but you did go back to /home/uscga.
 
 Run `pwd` one last time.
 
@@ -212,7 +212,7 @@ Run `pwd` one last time.
 There are lots of ways to get to your home directory. You could type it all 
 out, and run
 
-  `cd /home/pi`
+  `cd /home/uscga`
 
 or you could pass in that ~ special symbol to get there, like `cd ~`.
 Or, you could just enter `cd` without any arguments.

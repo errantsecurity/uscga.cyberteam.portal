@@ -220,8 +220,8 @@ no PARENT directory. So, trying to cd to .. from / will just put you back at /.
 
 Now let's change back to our home directory. Remember, at this point, you know A LOT
 of different ways to do that:
-                              `cd /home/pi` ... when using an absolute path
-                              `cd home/pi` ... when using a relative path from here
+                              `cd /home/uscga` ... when using an absolute path
+                              `cd home/uscga` ... when using a relative path from here
                               `cd ~`      ... when using that ~ as a special symbol
                               `cd`      ... when not passing any arguments to `cd`.
 

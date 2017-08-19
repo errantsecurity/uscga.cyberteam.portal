@@ -57,7 +57,7 @@
     },
     {
       "tag": "The root directory is the uppermost folder, so it has no parent!",
-      "message": "\n\rOf course not! \n\r\n\rThe root directory is the ROOT directory -- there is nothing above it, is has\n\rno PARENT directory. So, trying to cd to .. from / will just put you back at /.\n\r\n\rNow let's change back to our home directory. Remember, at this point, you know A LOT\n\rof different ways to do that:\n\r                  `cd /home/pi` ... when using an absolute path\n\r                  `cd home/pi` ... when using a relative path from here\n\r                  `cd ~`      ... when using that ~ as a special symbol\n\r                  `cd`      ... when not passing any arguments to `cd`.\n\r\n\rThe quickest one is the quickest one to type -- so let's run `cd` with no arguments.\n\r",
+      "message": "\n\rOf course not! \n\r\n\rThe root directory is the ROOT directory -- there is nothing above it, is has\n\rno PARENT directory. So, trying to cd to .. from / will just put you back at /.\n\r\n\rNow let's change back to our home directory. Remember, at this point, you know A LOT\n\rof different ways to do that:\n\r                  `cd /home/uscga` ... when using an absolute path\n\r                  `cd home/uscga` ... when using a relative path from here\n\r                  `cd ~`      ... when using that ~ as a special symbol\n\r                  `cd`      ... when not passing any arguments to `cd`.\n\r\n\rThe quickest one is the quickest one to type -- so let's run `cd` with no arguments.\n\r",
       "command_waiting": "cd",
       "incorrect": "Get back to your home directory with just the `cd` command."
     },

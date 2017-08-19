@@ -298,9 +298,9 @@ You got it! Did you see all that output? Scroll up as you need to.
 
 So this probably looks like a lot of nonsense to you right now -- which is okay.
 But it does show some interesting information that you should totally understand at
-this point. See your username on one line? The `pi` account.
+this point. See your username on one line? The `uscga` account.
 
-You can see the absolute path to your home directory, `/home/pi` and you 
+You can see the absolute path to your home directory, `/home/uscga` and you 
 can even see the shell you use: `bash`. Remember those binaries are stored in
 /bin and /usr/bin?
 

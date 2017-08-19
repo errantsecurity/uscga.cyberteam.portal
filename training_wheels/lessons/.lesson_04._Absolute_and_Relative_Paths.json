@@ -3,7 +3,7 @@
   "concepts": [
     {
       "tag": "All files and folders bases off of the root directory, '/'",
-      "message": "\n\rYou should notice, by now, that each path in Linux is built off of by forward-slashes, \n\r\"/\". You are in the /home/pi folder, which all bases off the \"root\" directory. \n\r\n\rThe \"root\" directory is the uppermost-level of the Linux filsystem. It is actually\n\rdenoted by a single forward-slash \"/\". Try changing directory to there: \"cd /\"\n\r\n\r",
+      "message": "\n\rYou should notice, by now, that each path in Linux is built off of by forward-slashes, \n\r\"/\". You are in the /home/uscga folder, which all bases off the \"root\" directory. \n\r\n\rThe \"root\" directory is the uppermost-level of the Linux filsystem. It is actually\n\rdenoted by a single forward-slash \"/\". Try changing directory to there: \"cd /\"\n\r\n\r",
       "command_waiting": "cd /",
       "incorrect": "Change directory to the root directory: `cd /`."
     },
