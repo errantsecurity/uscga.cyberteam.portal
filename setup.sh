@@ -11,7 +11,7 @@
 
 DEPENDENCIES="python python-pip git vagrant docker python-markdown \
 python-software-properties nodejs linuxbrew-wrapper nginx python-flask \
-gunicorn python-passlib virtualbox-qt"
+gunicorn python-passlib virtualbox-qt docker.io"
 
 
 # Ensure you are root!
@@ -41,6 +41,10 @@ function install_dependencies(){
 	
 }
 
+function build_training_wheels(){
+
+
+}
 
 function configure_nginx(){
 
