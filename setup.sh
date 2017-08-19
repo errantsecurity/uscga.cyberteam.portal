@@ -66,7 +66,7 @@ function prepare_gunicorn(){
 
 	# Make sure to run the app as a regular user. We shouldn't have to be
 	# root...
-	su `logname` -c gunicorn server:app
+	su `logname` -c "gunicorn server:app"
 }
 
 
