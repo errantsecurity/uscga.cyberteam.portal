@@ -11,6 +11,7 @@ import colorama
 import sys
 import socket
 import subprocess
+import time
 
 from colors.colors import *
 from save_engine.save_engine import SaveEngineClass
@@ -19,7 +20,6 @@ from lessons.lesson_book import LessonBookClass
 class TrainingWheelsShellClass():
 
 	def __init__( self ):
-
 
 		self.SaveEngine = SaveEngineClass( parent = self )
 		self.LessonBook = LessonBookClass( parent = self )
@@ -40,11 +40,19 @@ class TrainingWheelsShellClass():
 			"cd": self.change_directory,
 			"nano": self.protect_from_nano,
 			"sudo passwd guest": self.change_guest_password,
+			"yes": self.yes_faked,
 		}
 
 	def change_guest_password(self):
 		# Have to run it this way so the line handling happens correctly...
 		os.system("sudo passwd guest")
+
+	def yes_faked(self):
+		while( True ):
+			sys.stdout.write( self.LessonBook.something_to_say_inbetween )
+			print("y")
+			time.sleep(0.05)
+
 
 	def protect_from_nano(self):
 		print R("Training Wheels cannot handle running nano!")
@@ -133,7 +141,6 @@ class TrainingWheelsShellClass():
 			# return 
 		
 
-
 		''' If they actually entered something, treat it as a command '''
 		try:
 			p = subprocess.Popen(	#self.entered_input.split(), 
@@ -166,11 +173,13 @@ class TrainingWheelsShellClass():
 		while ( True ):
 
 			try:
-				
 				self.LessonBook.go()
 
 			except KeyboardInterrupt:
-				self.time_on = False
+				if self.time_on:
+					self.time_on = True
+				else:
+					self.time_on = False
 				sys.stdout.write("^C\n")
 				continue
 
