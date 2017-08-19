@@ -56,7 +56,7 @@ function configure_nginx(){
 	cat <<EOF > /etc/nginx/sites-enabled/flask_settings
 server {
 		location / {
-				proxy_pass http://127.0.0.1:8000;
+				# proxy_pass http://127.0.0.1:8000;
 		}
 }
 EOF
