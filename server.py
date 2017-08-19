@@ -741,4 +741,5 @@ def index():
 	return flask.render_template( "index.html" )
 
 subprocess.call( 'pkill gotty'.split() )
-app.run(debug=True, port=8000)
+# app.run(debug=True, port=8000)
+app.run()
