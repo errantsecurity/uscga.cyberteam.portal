@@ -73,7 +73,7 @@ function configure_docker(){
 	usermod -aG docker `logname`
 	cd training_wheels
 
-	docker build -t johnhammond/training_wheels .
+	docker build -t training_wheels .
 
 	cd ..
 
