@@ -15,6 +15,5 @@ pip install markdown
 
 ########################################
 brew install yudai/gotty/gotty
-
 export PATH=$PATH:/home/john/.linuxbrew/bin/
 echo "export PATH=$PATH:/home/john/.linuxbrew/bin/" >> ~/.bashrc

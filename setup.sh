@@ -30,11 +30,17 @@ function install_dependencies(){
 	# Let brew configure itself
 	echo "" | brew
 
+	# Brew will only install things if it is owned by root, so...
+	# Kinda silly, but we've gotta do it.
+	chown root:root `which brew`
+
 	# Have brew install gotty
 	sudo brew install yudai/gotty/gotty
 	export PATH=$PATH:/home/john/.linuxbrew/bin/
 	echo "export PATH=$PATH:/home/john/.linuxbrew/bin/" >> ~/.bashrc
 
+
+	
 }
 
 
