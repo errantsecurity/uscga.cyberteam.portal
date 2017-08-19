@@ -742,4 +742,4 @@ def index():
 
 subprocess.call( 'pkill gotty'.split() )
 # app.run(debug=True, port=8000)
-app.run()
+app.run( host='0.0.0.0', debug=True )
