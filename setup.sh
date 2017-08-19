@@ -10,7 +10,7 @@
 
 
 DEPENDENCIES="python python-pip git vagrant docker python-markdown \
-python-software-properties nodejs linuxbrew-wrapper nginx"
+python-software-properties nodejs linuxbrew-wrapper nginx python-flask"
 
 
 # Ensure you are root!
@@ -25,7 +25,7 @@ function install_dependencies(){
 	# Get nodejs 
 	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - 
 	# Install dependencies...
-	sudo apt-get update && sudo apt install -y $DEPENDENCIES
+	apt-get update && sudo apt install -y $DEPENDENCIES
 
 	# Let brew configure itself
 	echo "" | brew
@@ -35,7 +35,7 @@ function install_dependencies(){
 	chown root:root `which brew`
 
 	# Have brew install gotty
-	brew install yudai/gotty/gotty
+	runuser -l $USER -s "brew install yudai/gotty/gotty"
 	export PATH=$PATH:$HOME/.linuxbrew/bin/
 	echo "export PATH=$PATH:$HOME/.linuxbrew/bin/" >> ~/.bashrc
 
