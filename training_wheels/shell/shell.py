@@ -43,22 +43,22 @@ class TrainingWheelsShellClass():
 			"yes": self.yes_faked,
 		}
 
-	def change_guest_password(self):
+	def change_guest_password(self, argument = None):
 		# Have to run it this way so the line handling happens correctly...
 		os.system("sudo passwd guest")
 
-	def yes_faked(self):
+	def yes_faked(self, argument = "y"):
 		while( True ):
 			sys.stdout.write( self.LessonBook.something_to_say_inbetween )
-			print("y")
+			print(argument)
 			time.sleep(0.05)
 
 
-	def protect_from_nano(self):
+	def protect_from_nano(self, argument = None):
 		print R("Training Wheels cannot handle running nano!")
 		print R("The line buffering causes it to choke... sorry!")
 
-	def change_directory( self ):
+	def change_directory( self, argument = None):
 
 		to_directory = " ".join( self.entered_input.split(" ")[1:] )
 		
@@ -118,7 +118,7 @@ class TrainingWheelsShellClass():
 		sys.stdin.flush()
 		readline.add_history( self.entered_input )
 
-	def say_goodbye( self ):
+	def say_goodbye( self, argument = None):
 
 		print C("\n\nGoodbye!") 
 		print B("_" * 78 + "\n")
@@ -129,10 +129,10 @@ class TrainingWheelsShellClass():
 
 		if self.entered_input == "": return
 
-		command = self.entered_input.split(" ")[0]
+		command, arguments = self.entered_input.split(" ")[0], self.entered_input.split(" ")[1:]
 		if command in self.special_cases.iterkeys():
 			# Run the corresponding function that follows the 
-			self.special_cases[command]()
+			self.special_cases[command]( argument = " ".join(arguments)  )
 			return True
 		if self.entered_input in self.commands.iterkeys():
 			# Run the corresponding function that follows the 
