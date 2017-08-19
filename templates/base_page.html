@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> USCGA Portal</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/master.css')}}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js' ) }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/notify.js' ) }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/control.js' ) }}"></script>
+
+	<script src="{{url_for('static', filename='codemirror/lib/codemirror.js')}}"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='codemirror/lib/codemirror.css')}}">
+
+</head>
+	<body>
+		<div id="top_login">
+			{% if not current_user.is_authenticated %}
+				<a href="{{ url_for('login') }}">Login</a>  | 
+				<a href="{{ url_for('register') }}"> Register</a>
+			
+			{% else %}
+					<a href="{{url_for('specific_user', user_id=current_user.id)}}" id="logged_in_user">
+					{{ current_user.name }}</a> <span id="score"> [{{ current_user.score }}]</span> | <a href="{{ url_for('logout') }}">Logout</a> 
+			{% endif %}
+		</div>
+
+		<div id="left_pane">
+			<a href="{{ url_for('index') }}"><img id="logo" src="{{url_for('static', filename='img/white_logo.png') }}"></a>
+			
+			<div id="main_navigation">
+				<ul>
+
+					<li> <a href="{{ url_for('trainings', category = 'ctf') }}"> CTFs</a></li>
+					<li> <a href="{{ url_for('trainings', category = 'wargame') }}"> Wargames</a></li>
+					<li> <a href="{{ url_for('trainings', category = 'homemade') }}"> Challenges</a></li>
+					<li> <a href="{{ url_for('writeups') }}"> Writeups</a></li>
+					<li> <a href="{{ url_for('shell') }}"> Shell</a></li>
+					<li> <a href="{{ url_for('users') }}"> Users</a></li>
+				</ul>
+			</div>
+			<div id="stats">
+				You are visiting from {{request.environ['REMOTE_ADDR']}}.
+			</div>
+		</div>
+		<div id="right_pane">
+			{% block content %}
+			{% endblock %}		
+		</div>
+
+	{% with messages = get_flashed_messages(with_categories=true) %}
+	  {% if messages %}
+		<script>
+		    {% for category, message in messages %}
+		    $.notify("{{message}}", "{{category}}")
+		    {% endfor %}
+		</script>
+	  {% endif %}
+	{% endwith %}
+
+	<!--  This website and all of its components were developed by John Hammond, USCGA Class of 2018 -->
+
+	</body>
+</html>

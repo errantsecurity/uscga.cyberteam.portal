@@ -1,0 +1,23 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> Web Shell</h1>
+<p>
+	Below is your own personal <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a>, running <a href="http://releases.ubuntu.com/12.04/">Ubuntu 12.04</a> by default. The machine is created using <a href="https://www.vagrantup.com/">Vagrant</a> once you register.
+</p>
+
+
+<a target="_blank" style='color:gray;' href="http://localhost:{{port}}/" style="padding-bottom: 5px;">New Window</a>
+<iframe id="shell" src="http://localhost:{{port}}/">Your Virtual Machine is not currently running.</iframe>
+<br><br>
+<hr> 
+<p>
+	I have had the best luck copying-and-pasting in <a href="https://www.google.com/chrome/index.html">Google Chrome</a>.
+</p>
+
+<p style="color:orange">
+	If you have just registered and you are receiving errors, please a wait a few more moments for the virtual machine to build and turn on.
+</p>
+
+{% endblock %}

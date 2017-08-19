@@ -1,0 +1,13 @@
+{% extends "base_page.html" %}
+{% block content %}
+
+	<h1> {{ name }}</h1>
+
+	{{ writeup_content | safe }}
+	<br><br><br>
+
+	{% if author == current_user.name %}
+		<a href="{{ url_for('edit_writeup', writeup_id=writeup_id) }}" style="position:fixed; right: 10px; bottom: 0px;">
+		<img src="{{ url_for('static', filename='img/edit_icon.png') }}"  width="20px">
+	{% endif %}
+{% endblock %}

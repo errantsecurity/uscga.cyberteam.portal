@@ -1,0 +1,34 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> Register an Account</h1>
+      
+<p>
+  To sign up for an account, please enter your <a href="https://uscga.edu/">USCGA</a> EDU e-mail address and a password you would like to use for your account. The use of a <a href="https://uscga.edu/">USCGA</a> EDU e-mail ensures that you are in fact an Academy student.
+</p>
+
+
+
+<form method="POST" action="{{url_for('register')}}">
+  E-mail: <br>
+  <input type="text" name="email" value="{{email}}"> <br>
+  <br> 
+  Password: <br>
+  <input type="password" name="password" value="{{password}}"> <br>
+  <br> 
+  Confirm Password: <br>
+  <input type="password" name="confirm" value="{{confirm}}"> <br>
+  <br>
+<input type="submit" value="Register" id="submit_button">
+</form>
+
+<hr> <br>
+
+<p>
+	This website will store your password as a <a href="https://en.wikipedia.org/wiki/SHA-2">SHA256</a> hash, which, in the case of any database leak, is obviously stronger than plaintext or some other hashing algorithms... but it is only one defense tactic that should be accompanied by many others. <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a> <em>should</em> also be in place, but you as the end-user should check in the address bar of your web browser if it is present and can be trusted. 
+</p>
+<p>
+	And of course, your own endpoint for security should be a strong password, and one that you have not used elsewhere. <a href="https://en.wikipedia.org/wiki/Password_synchronization">Synchronized passwords</a> are the bane of all end-users.
+</p>
+{% endblock %}

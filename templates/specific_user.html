@@ -1,0 +1,89 @@
+{% extends "base_page.html" %}
+{% block content %}
+
+	<h1> {{ user.name }}</h1>
+	<p>
+		Overall Score: {{user.score}}
+	</p>
+	<hr><br>
+
+	<p>
+		Challenges Solved:
+	</p>
+	{% if seen_trainings %}
+	<div id="trainings">
+		{% for training_id in seen_trainings %}
+		<a href="{{url_for('training', training_id=training_id)}}">
+			<div class="training_block" style="font-size:large !important">
+			<p>
+
+			<span>{{ seen_trainings[training_id]['name'] }}</span>
+
+			<div class="challenge_blocks">
+			{% for challenge in seen_trainings[training_id]['challenges'] %}{% if challenge['completed'] %}<span style='color:lightgreen' class="challenge_symbol" title="{{challenge['name']}} [{{challenge['points']}}]">&#9642;{%else%}<span class="challenge_symbol" title="{{challenge['name']}} [{{challenge['points']}}]">&#9643;{%endif%}</span>{% endfor %}
+			</div>
+			</p>
+		</div></a>
+
+		{% endfor %}
+	</div>
+	{% else %}
+		<h3 style="color:red"> 
+			{% if user == current_user %}
+				You have not solved any challenges yet! Go on, quick, go solve something!
+			{% else %}
+				This person has not solved any challenges yet!
+			{% endif %}
+		</h3>
+
+	{% endif %}
+
+	<p>
+		Writeups Written:
+	</p>
+
+{% if writeups %}
+
+	<div id="scoreboard_container" style="min-height:300px;max-height:300px; overflow-y:scroll">
+	<table id="scoreboard" >
+		<tr>
+			<th align="left; "> # </th>
+			<th align="left">&nbsp; Name </th>
+			<th> Association </th>
+		</tr>
+
+		{% for writeup in writeups  %}
+			<tr onclick="window.document.location ='/writeups/{{writeup['id']}}'">
+				<td style="text-align: center; opacity: 0.3">{{ loop.index }}/{{ writeups|length }}</td>
+				<td style="text-indent: 10px;"> {{ writeup["name"] }} </td>
+				<td style="text-align: center; position:relative"> {{ writeup[ "association" ] }} 
+
+					{% if user == current_user %}
+					<a href="{{url_for('edit_writeup',writeup_id=writeup['id'])}}" class="edit_icon">
+						<img src="{{url_for('static', filename='img/edit_icon.png')}}" width="15px">
+					</a> 
+					<a href="{{url_for('delete_writeup',writeup_id=writeup['id'])}}" class="delete_icon confirm">
+
+						<img src="{{url_for('static', filename='img/delete_icon.png')}}" width="15px">
+					</a> 
+					{% endif %}
+					</td>
+			</tr>
+		{% endfor %}
+	</table>
+	</div>
+{% else %}
+
+		<h3 style="color:red"> 
+			{% if user == current_user %}
+				You have not written any writeups yet! Come on, go write some!
+			{% else %}
+				This person has not written any writeups yet!
+			{% endif %}
+		</h3>
+
+
+{% endif %}
+
+
+{% endblock %}

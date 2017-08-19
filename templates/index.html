@@ -1,0 +1,44 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> The Portal</h1>
+
+<p>
+	Welcome to the US Coast Guard Academy's Cyber Team Portal!
+</p>
+
+<hr> 
+<br>
+
+<div class="news_block">
+	<h2 style="color: lightgreen"> New to the Cyber Team? </h2>
+	<p>
+		Get up to speed on the <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> command-line with the Training Wheels shell.
+	</p>
+	<p style="text-align:center">
+			<img src="{{url_for('static',filename='img/training_wheels.png')}}" width=150>	
+	</p>
+	<p>
+		You don't need any special setup, you can run a VM here on the Portal!
+	</p>
+</div>
+
+<div class="news_block">
+
+    <h2 style="color:gold"> Returning Team Member? </h2>     <p>         Keep
+harnessing your skills with wargames, and check out the latest news:     </p>
+
+	<ul>
+		<li> 60 Intel NUCs were purchased! </li>
+		<li> $25k dollars spent on SANS vouchers! </li>
+	</ul>
+	
+	<hr>
+</div>
+
+<p style="text-align:center;">
+		<img src="{{url_for('static',filename='img/calendar/first.png')}}" height=275 style="box-shadow: 0px 0px 50px black;">	
+</p>
+
+{% endblock %}

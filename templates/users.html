@@ -1,0 +1,28 @@
+{% extends "base_page.html" %}
+{% block content %}
+
+	<h1> Team Members </h1>
+<!-- 
+	<p>
+		All team members registered with the Portal are listed below, with their overall score.
+	</p> -->
+
+	<div id="scoreboard_container">
+	<table id="scoreboard">
+		<tr>
+			<th align="left; text-align:center;">  </th>
+			<th align="left">&nbsp; Name </th>
+			<th> Score </th>
+		</tr>
+
+		{% for user in users  %}
+			<tr onclick="window.document.location ='/users/{{user['id']}}'">
+				
+				<td style="text-align: center; opacity: 0.3">{{ loop.index }} </td>
+				<td style="text-indent: 10px;"> {{ user["name"] }} </td>
+				<td style="text-align: center"> {{ user[ "score" ] }} </td>
+			</tr>
+		{% endfor %}
+	</table>
+	</div>
+{% endblock %}

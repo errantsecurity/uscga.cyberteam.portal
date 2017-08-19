@@ -1,0 +1,65 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+
+<h1>
+	{% if name == "" %} 
+	New
+	{% else %}
+	Edit
+	{% endif %}
+
+	Challenge </h1>
+
+<form action="{{ url_for('edit_challenge', challenge_id = challenge_id ) }}" method="POST"> 
+	Name:
+	<input type="text" name="name" value="{{name}}">
+	<br>
+
+	Prompt:
+	<br>
+	<textarea name="prompt" id="training_content" style="overflow-y:wrap;">{{prompt}}</textarea><br>
+
+	Flag:
+	<input type="text" name="possible_answers" value="{{possible_answers}}">
+	<br>
+
+	Points:
+	<input type="text" name="points" value="{{points}}">
+	<br>
+
+	Hint:
+	<input type="text" name="hint" value="{{hint}}">
+	<br>
+
+	<input id="submit_button" type="submit" value="Save Training"> 
+</form>
+
+
+<a href="{{ url_for('training', training_id=training_id) }}" class="bottom_right_button"> 
+	View Training</a>
+
+
+<script src="{{url_for('static', filename='codemirror/mode/xml/xml.js')}}"></script>
+<script src="{{url_for('static', filename='codemirror/mode/css/css.js')}}"></script>
+<script src="{{url_for('static', filename='codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
+
+<script src="{{url_for('static', filename='codemirror/addon/display/fullscreen.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='codemirror/addon/display/fullscreen.css')}}">
+<script>
+var editor = CodeMirror.fromTextArea(document.getElementById("training_content"), {
+      lineNumbers: true,
+      extraKeys: {
+        "F11": function(cm) {
+          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+        },
+        "Esc": function(cm) {
+          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+        }
+      }
+    });
+</script>
+
+
+{% endblock %}

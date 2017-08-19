@@ -1,0 +1,38 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+
+<h1>
+	New JSON Training </h1>
+
+<form enctype="multipart/form-data" action="{{ url_for('new_json_training') }}" method="POST"> 
+
+	Image: <br>
+	<img src="{{image}}" alt="" style="margin-left: auto; margin-right: auto; display:block; text-align:center;">
+	<input type="file" name="image" value="">
+
+	Category:
+	<br>
+	<select name="category">
+		<option selected value=""> -- No Category Selected -- </option>
+		<option value="ctf" {% if category == "ctf" %} selected {% endif %} >CTF</option>
+		<option value="wargame" {% if category == "wargame" %} selected {% endif %}>Wargame</option>
+		<option value="homemade" {% if category == "homemade" %} selected {% endif %} >Homemade Challenges</option>
+	</select>
+
+	
+	JSON Configuration:
+	<input type="file" name="json_configuration" value="{{json_configuration}}">
+	<br>
+
+	<p> Any errors will be displayed below: </p>
+	<pre style="background-color:rgba(0,0,0,0.5); min-height:100px;padding: 5px; color:red">
+
+{{errors}}
+	</pre>
+
+	<input id="submit_button" type="submit" value="Save Training"> 
+</form>
+
+{% endblock %}

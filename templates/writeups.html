@@ -1,0 +1,64 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> Solution Writeups </h1>
+    
+<p>
+	In the Capture the Flag scene, which is a large culture for cyber security specialists and
+hackers, after an individual solves some kind of technical challenge or problem, they document their solution in what is nicknamed "a writeup". The author explains their thought-process when looking at the problem, they share their code and any material they created to solve the problem, and then they show and
+explain how their solution works. 
+</p>
+<p>
+	Truth be told, we should do more documentation than we actually do... but the collection of writeups we <em>have</em> built is impressive.
+</p>
+
+	{% if writeups %}
+
+		<div id="scoreboard_container">
+		<table id="scoreboard">
+		<tr>
+			<th align="left; text-align:center;"> # </th>
+			<th align="left">&nbsp; Name </th>
+			<th> Author </th>
+			<th> Association </th>
+		</tr>
+
+		{% for writeup in writeups  %}
+
+			<tr onclick="window.document.location ='/writeups/{{writeup['id']}}'" >
+				<td style="text-align: center; opacity: 0.3">{{ loop.index }} </td>
+				<td style="text-indent: 10px;"> {{ writeup["name"] }} </td>
+				<td style="text-align: center"> {{ writeup[ "author" ] }} </td>
+				<td style="text-align: center; position: relative;"> {{ writeup[ "association" ] }} 
+					
+					{% if writeup['author'] == current_user.name %}
+					<a href="{{url_for('edit_writeup',writeup_id=writeup['id'])}}" 
+					class="edit_icon">
+						<img src="{{url_for('static', filename='img/edit_icon.png')}}" width="15px">
+					</a> 
+					<a href="{{url_for('delete_writeup',writeup_id=writeup['id'])}}" 
+					class="delete_icon confirm">
+
+						<img src="{{url_for('static', filename='img/delete_icon.png')}}" width="15px">
+					</a> 
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+
+		</table>
+	</div>
+
+	{% else %}
+		<h3 style="color:red"> There are currently no writeups in the database! </h3>
+	{% endif %}
+
+
+	<!-- New Writeup Button -->
+	<a href="{{url_for('new_writeup')}}" style="position:fixed; right: 10px; bottom: 10px;">
+	<img src="{{ url_for('static', filename='img/new_icon.png') }}"  width="20px">
+
+</a>
+
+{% endblock %}

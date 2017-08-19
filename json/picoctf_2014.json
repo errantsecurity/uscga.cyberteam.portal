@@ -1,0 +1,458 @@
+{
+	"name": "PicoCTF 2014",
+
+	"url": "https://2014.picoctf.com/",
+
+	"description": "
+	<p>
+	PicoCTF is a computer security game targeted at middle and high school students. The game consists of a series of challenges centered around a unique storyline where participants must reverse engineer, break, hack, decrypt, or do whatever it takes to solve the challenge. The challenges are all set up with the intent of being hacked, making it an excellent, legal way to get hands-on experience. 
+	</p>
+	<p>
+	",
+
+	"challenges": [
+
+		{
+
+			"name": "Tyrannosaurus Hex",
+
+			"prompt": "
+
+
+    The contents of the flash drive appear to be password protected. On the back of the flash drive, you see the hexadecimal number 0x4355a5e6 scribbled in ink. The password prompt, however, only accepts decimal numbers. What number should you enter? 
+			",
+
+			"possible_answers": [ "1129686502" ],
+			"points" : 10
+		},
+
+		{
+
+			"name": "No Comment",
+
+			"prompt": "
+
+The CD you find has a copy of your father's website: homepage.html. Maybe something is hidden in the site...
+	<br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Since this challenge only requires you to view the source, just submit this flag: <code>flag_f43cece2fb3bafc134c8056464abd793b9c3b8ce</code>
+	</span>
+",
+
+			"possible_answers": [ "flag_f43cece2fb3bafc134c8056464abd793b9c3b8ce" ],
+			"points" : 20
+		},
+		{
+
+			"name": "Common Vulnerability Exercise",
+
+			"prompt": "
+This disc is encrypted. The surprisingly elaborate password hint refers to 'the CVE Identifier for a 2014 vulnerability that allowed arbitrary code execution in Firefox via a buffer overflow in a speech codec'. If you found this 'CVE-ID' thingy, it'd probably be the password. 
+
+",
+
+			"possible_answers": [ "CVE-2014-1542" ],
+			"points" : 20
+		},
+
+		{
+			"name": "Caesar",
+
+			"prompt": "
+
+			
+    You find an encrypted message written on the documents. Can you decrypt it? 
+<br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Use this ciphertext: <code>qebpbzobqmxppmeoxpbfpmnezwrsraakxlqbguvdcgvkavseawh</code>
+	</span>
+
+    ",
+
+			"possible_answers": [ "PQHCZUVUDDNAOTEJXYGFJYNDYVHDZK" ],
+			"points" : 20
+		},
+
+		{
+			"name": "The Valley of Fear",
+
+			"prompt": "
+
+			The hard drive may be corrupted, but you were able to recover a small chunk of text. Scribbled on the back of the hard drive is a set of mysterious numbers. Can you discover the meaning behind these numbers? (1, 9, 4) (4, 2, 8) (4, 8, 3) (7, 1, 5) (8, 10, 1) 
+
+			",
+
+			"possible_answers": [ "Ceremonial plates" ],
+			"points" : 20
+		},
+		{
+			"name": "Internet Inspection",
+
+			"prompt": "
+On his computer, your father left open a browser with the Thyrin Lab Website. Can you find the hidden access code?
+<br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Since this challenge asks you to just view the page with developer tools, use this flag: <code>flag_e8f910e5f83893d2f7bc1229ca444cdc03be56d2</code>
+	</span>
+				",
+
+			"possible_answers": [ "flag_e8f910e5f83893d2f7bc1229ca444cdc03be56d2" ],
+			"points" : 30
+		},
+		{
+			"name": "Pickle Jar",
+
+			"prompt": "
+
+The police station offers free pickles to police officers. However, someone stole the pickles from the pickle jar! You find a clue on a USB drive left at the scene of the crime.
+				",
+
+			"possible_answers": [ "YOUSTOLETHEPICKLES" ],
+			"points" : 30
+		},
+		{
+			"name": "RoboPhoto",
+
+			"prompt": "
+
+Your father has been known to use the titles of his favorite books as passwords. While you don't remember any of the names of the books, your father keeps a poster for one of them on his wall. Can you figure out the name of the book and unlock the CD? 
+				",
+
+			"possible_answers": [ "The Positronic Man" ],
+			"points" : 30
+		},
+		{
+			"name": "This is the Endian",
+
+			"prompt": "
+This is the end! Solving this challenge will help you defeat Daedalus's cyborg. You can find more information about endianness and the problem here. The flag is the smallest possible program input that causes the program to print 'Access Granted'.
+				",
+
+			"possible_answers": [ "cveR!edo" ],
+			"points" : 40
+		},
+		{
+			"name": "Intercepted Post",
+
+			"prompt": "
+We intercepted some of your Dad's web activity. Can you get a password from his traffic?. You can also view the traffic on CloudShark.
+				",
+
+			"possible_answers": [ "flag{pl$_$$l_y0ur_l0g1n_form$}" ],
+			"points" : 40
+		},
+		{
+			"name": "Supercow",
+
+			"prompt": "
+Daedalus Corp. has a special utility for printing .cow files at /home/daedalus/supercow. Can you figure out how to get it to print out the flag?
+				",
+
+			"possible_answers": [ "cows_drive_mooooving_vans" ],
+			"points" : 40
+		},
+		{
+			"name": "Grep is Still Your Friend",
+
+			"prompt": "
+On his computer, your father left open a browser with the Thyrin Lab Website. Can you find the hidden access code?
+<br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Since this challenge asks you to just use grep, use this flag: <code>b2bee8664b754d0c85c4c0303134bca6</code>
+	</span>
+				",
+
+			"possible_answers": [ "b2bee8664b754d0c85c4c0303134bca6" ],
+			"points" : 40
+		},
+		{
+			"name": "Javascrypt",
+
+			"prompt": "
+Tyrin Robotics Lab uses a special web site to encode their secret messages. Can you determine the value of the secret key? 
+<br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Use these values for the variable: <code>var i = 1; var x = 172; var n = 5493;</code>
+	</span>
+				",
+
+			"possible_answers": [ "flag_3855" ],
+			"points" : 40
+		},
+		{
+			"name": "Easy Overflow",
+
+			"prompt": "
+Is the sum of two positive integers always positive? <code>nc vuln2014.picoctf.com 50000</code> 'nc' is the Linux netcat command. Try running it in the shell.
+",
+
+			"possible_answers": [ "That_was_easssy!" ],
+			"points" : 40
+		},
+		{
+			"name": "Write Right",
+
+			"prompt": "
+Can you change the secret? The binary can be found at /home/write_right/ on the shell server.
+				",
+
+			"possible_answers": [ "arbitrary_write_is_always_right" ],
+			"points" : 50
+		},
+		{
+			"name": "Overflow 1",
+
+			"prompt": "
+
+This problem has a buffer overflow vulnerability! Can you get a shell, then use that shell to read flag.txt? You can solve this problem interactively here, and the source can be found here. 
+				",
+
+			"possible_answers": [ "ooh_so_critical" ],
+			"points" : 50
+		},
+		{
+			"name": "Redacted",
+
+			"prompt": "
+
+ You found <a href='https://2014.picoctf.com/problem-static/forensics/redacted/Redacted.pdf'>a letter</a> that may shed light on recent events. 
+				",
+
+			"possible_answers": [ "one_two_three_four" ],
+			"points" : 50
+		},
+		{
+			"name": "Toaster Control",
+
+			"prompt": "
+
+  Daedalus Corp. uses a <a href='http://web2014.picoctf.com/toaster-control-1040194/'>web interface</a> to control some of their toaster bots. It looks like they removed the command 'Shutdown & Turn Off' from the control panel. Maybe the functionality is still there... 
+				",
+
+			"possible_answers": [ "flag_c49bdkeekr5zqgvc20vc" ],
+			"points" : 50
+		},
+		{
+			"name": "ZOR",
+
+			"prompt": "
+
+  Daedalus has encrypted their blueprints! Can you get us the password?
+  <br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	To submit the flag for this challenge, enter the MD5SUM of the decrypted message <i> up until the actual flag </i> (space included).
+ 	</span>
+				",
+
+			"possible_answers": [ "77b21e4a3d02a71f818991ccf392f3e5" ],
+			"points" : 50
+		},
+		{
+			"name": "Substitution",
+
+			"prompt": "
+
+  There's an authorization code for some Thyrin Labs information here, along with someone's favorite song. But it's been encrypted! Find the authorization code.
+  <br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Use the file downloaded here.
+ 	</span>
+				",
+
+			"possible_answers": [ "awholenewworld" ],
+			"downloadable_files": ["picoctf_2014/substitution.txt"],
+			"points" : 50
+		},
+		{
+			"name": "Function Address",
+
+			"prompt": "
+
+  We found this program file on some systems. But we need the address of the 'find_string' function to do anything useful! Can you find it for us? 
+				",
+
+			"possible_answers": [ "08048444" ],
+			
+			"points" : 60
+		},
+		{
+			"name": "Basic ASM",
+
+			"prompt": "
+
+  We found this program, but we're having some trouble figuring it out. What's the value of %eax when the last instruction (the NOP) runs? 
+  <br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Use the file downloaded here.
+ 	</span>
+				",
+
+			"possible_answers": [ "177651584" ],
+			"downloadable_files": ["picoctf_2014/basic_asm.txt"],
+			"points" : 60
+		},
+		{
+			"name": "Spoof Proof",
+
+			"prompt": "
+
+  The police have retrieved a network trace of some suspicious activity. Most of the traffic is users viewing their own profiles on a social networking website, but one of the users on the network downloaded a file from the Thyrin Labs VPN and spoofed their IP address in order to hide their identity. Can you figure out the last name of person that accessed the Thyrin files, and the two source IP addresses they used?
+[Example valid flag format: 'davis,192.168.50.6,192.168.50.7']
+				",
+
+			"possible_answers": [ "johnson,192.168.50.4,192.168.50.3" ],
+			
+			"points" : 60
+		},
+		{
+			"name": "Delicious!",
+
+			"prompt": "
+
+  You have found the administrative control panel for the Daedalus Coperation Website: https://web2014.picoctf.com/delicious-5850932/login.php. Unfortunately, it requires that you be logged in. Can you find a way to convince the web site that you are, in fact, logged in?
+				",
+
+			"possible_answers": [ "session_cookies_are_the_most_delicious" ],
+			
+			"points" : 60
+		},
+		{
+			"name": "Format",
+
+			"prompt": "
+
+  This program is vulnerable to a format string attack! See if you can modify a variable by supplying a format string! The binary can be found at /home/format/ on the shell server. The source can be found here. 
+				",
+
+			"possible_answers": [ "who_thought_%n_was_a_good_idea?" ],
+			
+			"points" : 70
+		},
+		{
+			"name": "Repeated XOR",
+
+			"prompt": "
+
+  There's a secret passcode hidden in the robot's 'history of cryptography' module. But it's encrypted! Here it is, hex-encoded: encrypted.txt. Can you find the hidden passcode? 
+<br><span style='color:red'> NOTE: This is automatically generated challenge, so the flag will be different from user to user. 
+	Use the file downloaded here.
+ 	</span>
+				",
+
+			"possible_answers": [ "1dd2a52a367b19748bba4ab6a53b03f1226da5bd" ],
+			"downloadable_files" : ["picoctf_2014/repeated_xor.txt"],
+			"points" : 70
+		},
+		{
+			"name": "Overflow 2",
+
+			"prompt": "
+
+  This problem has a buffer overflow vulnerability! Can you get a shell? 
+
+				",
+
+			"possible_answers": [ "controlling_%eip_feels_great" ],
+			
+			"points" : 70
+		},
+		{
+			"name": "Guess",
+
+			"prompt": "
+
+  This program requires you to guess a random 32-bit number! Sounds difficult, right? There is a server running at vuln2014.picoctf.com:4546, and the source can be found here. 
+
+				",
+
+			"possible_answers": [ "leak_the_seakret" ],
+			
+			"points" : 75
+		},
+		{
+			"name": "Cyborg Secrets",
+
+			"prompt": "
+
+  You found a password protected binary on the cyborg relating to its defensive security systems. Find the password and get the shutdown code! You can find it on the shell server at /home/cyborgsecrets/cyborg-defense or you can download it here.
+
+				",
+
+			"possible_answers": [ "403-shutdown-for-what" ],
+			
+			"points" : 80
+		},
+		{
+			"name": "Droid App",
+
+			"prompt": "
+
+  An Android application was released for the toaster bots, but it seems like this one is some sort of debug version. Can you discover the presence of any debug information being stored, so we can plug this?
+You can download the apk <a href='https://2014.picoctf.com/problem-static/forensics/DroidApp/ToasterBot.apk'>here</a>. 
+
+				",
+
+			"possible_answers": [ "what_does_the_logcat_say" ],
+			
+			"points" : 80
+		},
+		{
+			"name": "Snapcat",
+
+			"prompt": "
+
+  It was found that a Daedalus employee was storing his personal files on a work computer. Unfortunately, he corrupted the filesystem before we could prove it. Can you take a look? Download <a href='https://2014.picoctf.com/problem-static/forensics/snapcat/disk.img'>here</a>. 
+
+				",
+
+			"possible_answers": [ "i_can_has_cheezburger" ],
+			
+			"points" : 80
+		},
+		{
+			"name": "RSA",
+
+			"prompt": "
+
+  A Daedalus Corp spy sent an RSA-encrypted message. We got their key data, but we're not very good at math. Can you decrypt it? Here's the data. Note that the flag is not a number but a number decoded as ASCII text.
+
+				",
+
+			"possible_answers": [ "modular_arithmetics_not_so_bad_after_all!" ],
+			
+			"points" : 80
+		},
+		{
+			"name": "ExecuteMe",
+
+			"prompt": "
+
+  This program will run whatever you send to it! Try to get the flag! The binary can be found at /home/execute/ on the shell server. The source can be found here.
+
+				",
+
+			"possible_answers": [ "shellcode_is_kinda_cool" ],
+			
+			"points" : 80
+		},
+		{
+			"name": "Injeection 1",
+
+			"prompt": "
+
+  Daedalus Corp. has been working on their login service, using a brand new SQL database to store all of the access credentials. Can you figure out how to login? 
+
+				",
+
+			"possible_answers": [ "flag_vFtTcLf7w2st5FM74b" ],
+			
+			"points" : 0
+		},
+		{
+			"name": "PNG or Not?",
+
+			"prompt": "
+
+  On a corner of the bookshelf, you find a small CD with an image file on it. It seems that this file is more than it appears, and some data has been hidden within. Can you find the hidden data? 
+
+				",
+
+			"possible_answers": [ "flag_vFtTcLf7w2st5FM74b" ],
+			
+			"points" : 0
+		}
+	]
+}
+

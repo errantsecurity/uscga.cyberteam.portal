@@ -1,0 +1,58 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> 
+	{% if name == "" %} 
+	Create a new
+	{% else %}
+	Edit a
+	{% endif %}
+	Writeup </h1>
+
+<form action="{{ url_for('edit_writeup', writeup_id = writeup_id) }}" method="POST"> 
+	Name:
+	<input type="text" name="name" value="{{name}}">
+	Association:
+	<br>
+	<select name="association">
+		<option selected value=""> -- No Association Selected -- </option>
+		{% for possible_association in possible_associations %} 
+
+			{% if possible_association['name'] == association %}
+			<option value="{{possible_association['name']}}" selected> 
+			{{ possible_association['name'] }} </options>
+			{% else %}
+			<option value="{{possible_association['name']}}"> 
+			{{ possible_association['name'] }} </options>
+			{% endif %}
+		{% endfor %}
+	</select>
+	<br> 
+
+	<textarea name="content" id="writeup_content">{{content}}</textarea>
+	<br>
+
+	<input id="submit_button" type="submit" value="Save Writeup"> 
+</form>
+
+<a href="{{ url_for('specific_writeup', writeup_id=writeup_id) }}" class="bottom_right_button"> 
+	View Writeup</a>
+
+<script src="{{url_for('static', filename='codemirror/mode/markdown/markdown.js')}}"></script>
+<script src="{{url_for('static', filename='codemirror/addon/display/fullscreen.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='codemirror/addon/display/fullscreen.css')}}">
+<script>
+var editor = CodeMirror.fromTextArea(document.getElementById("writeup_content"), {
+      lineNumbers: true,
+      extraKeys: {
+        "F11": function(cm) {
+          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+        },
+        "Esc": function(cm) {
+          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+        }
+      }
+    });
+</script>
+{% endblock %}

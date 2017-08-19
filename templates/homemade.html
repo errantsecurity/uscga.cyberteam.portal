@@ -1,0 +1,50 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+<h1> Homemade Challenges </h1>
+    
+<p>
+	We can't always rely on the rest of the world to make the training for us. So, we take matters into our own hands.
+</p>
+
+<p>
+	Below is a list of training material that we have made ourselves. Homemade challenges, mini-wargames, activities and more. 
+</p>
+
+
+<br>
+<hr>
+<br>
+
+
+{% if trainings %}
+	<div id="trainings">
+	
+		{% for training in trainings  %}
+	
+		<a href="{{ url_for('training', training_id = training['id'] )}}">
+			<div class="training_block">
+				
+				<img height="100" src="{{training['image']}}" alt="{{training['name']}}">
+
+				{% if training['author'] == current_user.name %}
+ 					<a href="{{url_for('edit_training', training_id = training['id'])}}"  class="edit_icon">
+						<img src="{{url_for('static', filename='img/edit_icon.png')}}" width="15px" alt="">
+					</a> 
+					<a href="{{url_for('delete_training', training_id = training['id'])}}" class="delete_icon confirm">
+						<img src="{{url_for('static', filename='img/delete_icon.png')}}" width="15px" alt="">
+					</a> 
+					{% endif %}
+			</div></a>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+
+<a href="{{url_for('new_training', category='homemade')}}" style="position:fixed; right: 10px; bottom: 10px;">
+<img src="{{ url_for('static', filename='img/new_icon.png') }}"  width="20px"></a>
+
+
+
+{% endblock %}

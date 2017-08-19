@@ -1,0 +1,89 @@
+{% extends "base_page.html" %}
+
+{% block content %}
+
+	<h1> {{ name }} </h1>
+	
+	{% if url %}
+	<span style="color: gray"> Visit the official site: 
+		<a href="{{training.url}}">{{training.url}}</a>
+	</span>
+	{% endif %}
+
+	{{ description | safe }}
+
+	{% if challenges %}
+		<div id="challenges">
+			
+			{% for challenge in challenges %}
+			<div class="challenge" id="{{ challenge.id }}">
+
+				<h3 class="challenge_title" style="position:relative;"> {{ challenge.name | safe }} <span> 
+
+					<a href="" class="create_writeup">Create Writeup</a>
+
+					{{ challenge.points }}
+					</span>
+
+					{% if challenge['author'] == current_user.name %}
+ 					<a href="{{url_for('edit_challenge', challenge_id=challenge['id'])}}"  class="edit_icon">
+						<img src="{{url_for('static', filename='img/edit_icon.png')}}" width="15px" alt="">
+					</a> 
+					<a href="{{url_for('delete_challenge', challenge_id=challenge['id'])}}" class="delete_icon confirm">
+						<img src="{{url_for('static', filename='img/delete_icon.png')}}" width="15px" alt="">
+					</a> 
+					{% endif %}
+				</h3>
+
+				<form>
+					<p>
+						{{ challenge.prompt | safe }}
+					</p>
+					{% if challenge.downloadable_files %}
+						<ul>
+							{% for downloadable_file in challenge.downloadable_files %}
+								<li> <a href="{{ url_for('static', filename='downloads/' + downloadable_file )}}"> {{ downloadable_file }}</a></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+
+					<input type="hidden" name="challenge_id" value="{{ challenge.id }}">
+					<input type="text" name="answer">
+					<input type="submit" id="submit_button" value="Submit" onclick="return check_answer({{challenge.id}})">
+					
+				</form>
+			</div>
+		{% endfor %}
+
+		<br><br><br>
+	</div>
+	{% endif %}
+
+
+	{% if current_user.name in author %}
+		<a href="{{ url_for('edit_training', training_id=training_id) }}" style="position:fixed; right: 10px; bottom: 10px;">
+		<img src="{{ url_for('static', filename='img/edit_icon.png') }}" width="20px">
+	{% endif %}
+
+	<script>
+
+	// Hide all the challenges by default. 
+	$('form').hide()
+	$('.challenge_title').click( function(){
+		$(this).next().slideToggle();
+	} )
+
+	// Hide all the challenges that the user has already solved.
+	var solved_challenges = "{{current_user.solved_challenges}}".split(" ").slice(1);	
+	solved_challenges.forEach( function(pairing, index, array){
+	
+		pieces = pairing.split(":");
+		training_id = pieces[0];
+		challenge_id = pieces[1];
+
+		// This function is in the `control.js` script. It just hides and makes a challenge green
+		correct_challenge( challenge_id )		
+	} );
+
+	</script>
+{% endblock %}

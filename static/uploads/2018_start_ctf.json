@@ -1,0 +1,222 @@
+{
+
+	"app_title" : "2017-2018 Welcome Back CTF",
+
+	"app_navigation_logged_out": {
+		"About": "/about",
+		"Scoreboard": "/scoreboard",
+		"Login": "/login",
+		"Register": "/register" },
+
+	"app_navigation_logged_in": {
+
+		"Challenges": "/challenges",
+		"About": "/about",
+		"Scoreboard": "/scoreboard",
+		"Log Out": "/logout"
+	},
+
+	"app_about": "<p>
+			<h3> Welcome back to the Cyber Team! </h3>
+		</p>
+		<p>
+			This is a small set of challenges just to whet your appetite and get your head back in the game.
+			Please, don't consider it a competition -- you're not in it to win anything or race to the top.
+			The challenges here are meant to be simple, but still have enough quirks to remind you 'how to cyber'...
+			you know, think critically and research tools and techniques, and hopefully write some code.
+		</p>
+
+		<h2>Good luck and have fun!</h2>
+	",
+
+	"challenges": [
+
+		{
+			"title": "Cats",
+
+			"prompt": "
+				<p>
+				Not just a musical! Connect to the service running on <code>10.6.1.7</code>, port <code>3887.</code>
+				</p>
+				<p>
+				<small> Don't know this means? <a href='http://lmgtfy.com/?q=net+cat'>Trying Googling what `cats` can be on the net!</a></small>
+				</p>
+			",
+
+			"possible_answers": [ "USCGA{netcat_is_the_best_cat}" ],
+			"points" : 5
+		},
+
+		{
+			"title": "IRS",
+
+			"prompt": "
+				The Internal Revenue Service has a new covert communication channel. Your money is always safe!
+				",
+
+			"possible_answers": [ "USCGA{wait_this_is_irc_not_the_irs}" ],
+			"points" : 20
+		},
+		{
+
+			"title": "EasySeed",
+
+			"prompt": "
+
+				Catch me if you can!
+				",
+
+			"possible_answers": [ "USCGA{a_random_seed_is_not_always_so_random}" ],
+			"downloadable_files" : ["2018_start/easy_seed.py"],
+			"points" : 20
+		},
+		{
+
+			"title": "Pack'd",
+
+			"prompt": "
+				What secrets does this binary hold??!
+				",
+
+			"possible_answers": [ "USCGA{packing_an_executable_can_hide_some_data}" ],
+			"downloadable_files" : ["2018_start/delivery"],
+			"points" : 20
+		},
+
+		{
+			"title": "The Bomb",
+
+			"prompt": "
+
+				<p> Oh no! A bomb is going to go off in this house, only you can stop it!
+				<a href='http://10.6.1.7/the_bomb/'>http://10.6.1.7/the_bomb/</a>
+				</p>
+				<p>
+					<small> If only the bomber left something behind...</small>
+				</p>",
+
+			"possible_answers": [ "USCGA{cookies_can_save_lives}" ],
+			"points" : 30
+		},
+
+		{
+			"title": "HashHash",
+
+			"prompt": "
+				<p>
+					CashCash is rebranding their name and releasing new electronic music, all under the new stagename HashHash! Listen to their new song here!
+				</p>
+				<p>
+					<b> NOTE: This is not in the usual flag format.</b>
+				</p>
+				",
+
+			"possible_answers": [ "YOUWIN" ],
+			"downloadable_files": ["2018_start/HashHash.wav"],
+			"points" : 30
+		},
+		{
+			"title": "Polybius",
+
+			"prompt": "
+
+				<p> 
+				Polybius is hosting a party, and you're invited. He gave you his number; be there or be square!
+				 </p>
+				<p>
+					<b> NOTE: This is not in the usual flag format.</b>
+				</p>
+				",
+
+			"possible_answers": [ "polybiussquareisnottoohard" ],
+			"downloadable_files": ["2018_start/polybius.txt"],
+			"points" : 30
+		},
+		{
+			"title": "PDF-orensics",
+
+			"prompt": "
+
+				The latest files from our ongoing investigation are getting more and more obscure. Find out what they are hiding!
+				",
+
+			"possible_answers": [ "USCGA{pdf_files_have_a_lot_to_them}" ],
+			"downloadable_files": ["2018_start/investigation.pdf"],
+			"points" : 30
+		},
+		{
+			"title": "Base Contest",
+
+			"prompt": "
+				It's a whole new kind of competition -- who is the best base?
+				",
+
+			"possible_answers": [ "USCGA{all_your_base_are_belong_to_us}" ],
+			"downloadable_files": ["2018_start/base_contest.txt"],
+			"points" : 40
+		},
+		{
+			"title": "Tragic Number",
+
+			"prompt": "
+
+				For some reason this zip archive won't unzip. Help!
+				",
+
+			"possible_answers": [ "USCGA{wrong_magic_number_makes_a_tragic_file}" ],
+			"downloadable_files": ["2018_start/tragic.zip"],
+			"points" : 40
+		},
+		{
+			"title": "Winter Wonderland",
+
+			"prompt": "
+			It's the holiday season! But hmm... they must be hiding something under all that cheer!
+				",
+
+			"possible_answers": [ "USCGA{snow_can_both_hide_and_show}" ],
+			"downloadable_files": ["2018_start/let_it_snow.txt"],
+			"points" : 40
+		},
+		{
+			"title": "shattered",
+
+			"prompt": "
+
+			<p>
+				Remember Bsides? If only we knew about <a href=\"http://www.circlemud.org/jelson/software/tcpflow/\"><b><code>tcpflow</code></b></a>...
+				</p>
+				<p>
+					<b> Wrap the flag in the typical \"USCGA{}\" format. </b>
+				</p>
+				",
+				"downloadable_files": [ "2018_start/shattered.pcapng" ],
+			"possible_answers": [ "USCGA{unshattered.jpg}" ],
+			"points" : 40
+		},
+		{
+			"title": "Executive Order",
+
+			"prompt": "
+The World-Wide-Warden just released a new executive order on some kind of weird technology trick, used in math and science. But it all looks like nonsense to me...
+				",
+				"downloadable_files": [ "2018_start/executive_order.txt" ],
+			"possible_answers": [ "USCGA{executive_order_on_xor}" ],
+			"points" : 40
+		},
+		{
+			"title": "Hot Access",
+
+			"prompt": "
+Access to all the latest modules, hot off the press! What can <i>you</i> access?
+<p>
+<a href='http://10.6.1.7:5555/'>http://10.6.1.7:5555/</a>
+</p>
+				",
+				
+			"possible_answers": [ "USCGA{htaccess_can_control_what_you_access}" ],
+			"points" : 40
+		}
+
+	]
+}

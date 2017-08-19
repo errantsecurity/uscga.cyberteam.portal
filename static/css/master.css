@@ -1,0 +1,450 @@
+@font-face {
+	font-family: ShareTech;
+	/*src: url("{{url_for('static', filename='font/share_tech_font.ttf') }}");*/
+	src: url("../font/share_tech_font.ttf");
+}
+@font-face {
+	font-family: FORCEDSQUARE;
+	/*src: url("{{url_for('static', filename='font/FORCED_SQUARE.ttf') }}");*/
+	src: url("../font/FORCED_SQUARE.ttf");
+}
+
+*{
+
+	z-index: 3;
+}
+body, html{
+	font-family: ShareTech;
+	font-size: 110%;
+	padding: 0px 0px;
+	margin: 0px 0px;
+	height: 100%;
+	/*background: url('faded_background_left.png') left center fixed;*/
+	/*background: url("{{url_for('static', filename='img/faded_background.png') }}") right center fixed;*/
+	background: url("../img/faded_background.png") right center fixed;
+	background-repeat: no-repeat;
+	background-color: rgba(35,35,35,1);
+
+	background-size: contain;
+}
+#left_pane{
+
+	float: left;
+	position: fixed;
+	
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,00
+	/*box-shadow: silver 0px 0px 10px;*/
+	width: 20%;
+	height: 100%;
+	background-color: rgba(0,0,0,0);
+	z-index: 10 !important;
+
+}
+
+#top_login a{
+	color: gray;
+	padding: 3px;
+	text-decoration: none;
+}
+#top_login a:hover{
+	/*text-shadow: silver 0px 0px 3px;*/
+	text-decoration: underline;
+	color: white;
+}
+#top_login{
+
+	z-index: 5;
+	height: 30px;
+	position:fixed;
+	right: 0px;
+	color: white;
+	text-align: right;
+	background-color: black;
+	
+	background: -moz-linear-gradient(top, rgba(35,35,35,1) 0%, rgba(0,0,0,0) 100%); 
+	background: -webkit-linear-gradient(top, rgba(35,35,35,1) 0%,rgba(0,0,0,0) 100%);
+	background: linear-gradient(to bottom, rgba(35,35,35,1) 0%,rgba(0,0,0,0) 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); 
+	padding: 20px;
+	width: 79%;
+	float: right;
+}
+#right_pane{
+	
+	background-repeat: no-repeat;
+
+	padding-top: 10px;
+	margin-right: 3%;
+	float: right;
+	width: 75%;
+	min-height: 90%;
+	color: #eee;
+	padding-bottom: 100px;
+}
+h1, h2, h3, h4{
+
+	color: white;
+}
+h1{
+	font-size: 340%;
+}
+#main_navigation{
+	width: 80%;
+	text-align: right;
+	/*float: right;*/
+}
+#main_navigation ul{
+	list-style: none;
+	/*display: table;*/
+}
+
+#main_navigation a{
+	display: block;
+	color: white;
+	/*background-color: yellow;*/
+	padding-top: 20px;
+	text-decoration: none;
+}
+#main_navigation a:hover{
+	text-shadow: black 0px 0px 3px;
+	text-decoration: underline;
+}
+#logo{
+	z-index: -3;
+	width: 70%;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+a{
+
+	color: skyblue;
+}
+#stats{
+	/*padding-top: 180px;*/
+	text-align: center;
+	color: lightgreen;
+	opacity: .6;
+	width: 20%;
+	position: fixed;
+	bottom: 0px;
+	padding-bottom: 10px;
+	font-style: italic;
+}
+hr{
+	/*height: 2px;*/
+	/*padding: 10px;*/
+	box-shadow: black 0px 0px 3px;
+	border-top: none;
+	border-radius: 30px;
+	color: orange;
+}
+#banner{
+
+	background-color:black;
+	font-family: FORCEDSQUARE;
+	text-transform: uppercase;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 80%;
+	padding: 1%;
+	/*margin-top: -80px;*/
+	z-index: -10;
+	font-size: 250%;
+	text-shadow:black 0px 0px 5px;
+}
+#footer{
+	/*background-color: black;*/
+	color: gray;
+	text-align: center;
+	padding: 30px;
+	font-size: smaller;
+	font-style: italic;
+	/*box-shadow: black 0px 0px 40px;*/
+	opacity: .1;
+	position: fixed;
+	bottom: 0px;
+	right: 0%;
+	/*margin-top: 50px;*/
+	width: 99.5%;
+	z-index: 0 !important;
+}
+p{
+	text-indent: 15px;
+	text-shadow: 0px 0px 10px black;
+}
+form{
+	padding: 30px;
+	/*margin: 3% 0% 0% 3%;*/
+	background-color: rgba(0,0,0,0.6);
+
+}
+input{
+	border: 0;
+	background-color: rgba(0,0,0,0);
+	color: white;
+	border-bottom: 1px solid teal;
+	font-size: 125%;
+	width: 98%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+input:hover{
+	border-bottom: 1px solid skyblue;
+}
+input:focus{
+	border-bottom: 1px solid lightgreen;
+}
+#submit_button{
+	width: 98%;
+	background-color: rgba(0,0,0,.8);
+	margin: 10px;
+	padding: 20px;
+	text-transform: uppercase;
+	font-family: ShareTech;
+	/*font-size: 200%;*/
+	color:lightgreen;
+	border: 1px solid rgba(0,0,0,0);
+
+}
+#submit_button:hover, #submit_button:focus{
+	cursor: pointer;
+	border: 1px solid skyblue;
+	/*box-shadow: 0px 0px 30px black;*/
+	text-decoration: underline;
+	/*border: 0px;*/
+	color: lightgreen;
+}
+
+#shell{
+
+	border: 0;
+	width: 95%;
+	height: 500px;
+	padding: 10px;
+	background-color: black;
+	overflow-y: none;
+
+}
+
+#scoreboard_container{
+
+	margin-top: 30px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+	min-height: 600px;
+	padding-top: 2px;
+	padding: 0px;
+
+}
+
+#scoreboard{
+
+	
+	padding: 10px 0px;
+	
+	width: 100%;
+	
+	border-collapse: collapse;
+}
+tr{
+	height: 50px;
+	cursor: pointer;
+}
+
+tr:hover{
+	border-bottom: 1px solid skyblue;
+	background-color: rgba(0,0,0,0.9)
+}
+th{
+	color: rgba(90,90,90,1);
+	border-bottom: 1px solid rgba(90,90,90,1);
+}
+#logged_in_user{
+	color: white !important;
+	cursor: pointer;
+}
+#logged_in_user:hover{
+	text-decoration: underline;
+}
+
+
+select{
+	border: 0;
+	background-color: rgba(0,0,0,0);
+	color: white;
+	border-bottom: 1px solid teal;
+	font-size: 125%;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.bottom_right_button{
+
+	text-decoration: none;
+	color:gold;
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+	z-index: 5;
+}
+
+.bottom_right_button:hover, .bottom_right_button:focus{
+
+	text-decoration: underline;
+}
+
+.challenge_title{
+
+	background-color: rgba(0,0,0,0.5);	
+	/*padding: 0px;*/
+	margin: 0px;
+	padding: 15px;
+	/*padding-left: 5px;*/
+	border-bottom: 1px solid gold;	
+}
+
+.challenge_title:hover{
+	text-decoration: underline;
+	cursor: pointer;
+	opacity: 1 !important;
+
+}
+
+.challenge{
+	z-index: 0 !important;
+	margin: 20px;
+}
+#score{
+
+	opacity: 0.5;
+}
+
+.challenge_title span{
+	padding-left: 5px;
+	float: right;
+	font-weight: normal;
+	opacity: 0.7;
+}
+
+#trainings{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+}
+
+.training_block{
+
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	background-color: rgba(0,0,0,0.7);
+	font-family: FORCEDSQUARE;
+
+	text-transform: uppercase;
+	padding: 20px;
+	color: lightgreen !important;
+	margin: 10px;
+	
+	border: 1px solid black;
+	max-height: 200px;
+
+	text-decoration: none !important;
+}
+
+.news_block{
+
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	background-color: rgba(0,0,0,0.7);
+	
+	padding: 0px 20px;
+	
+	margin: 10px;
+
+	border: 1px solid rgba(0,0,0,0.4);;
+	width: 45%;	
+	min-height: 340px;
+}
+
+.news_block:hover{
+	cursor: pointer;
+	border: 1px solid skyblue;
+}
+
+
+.training_block:hover {
+	color: lightgreen !important;
+	border: 1px solid skyblue;
+}
+
+.training_block a{
+	color: lightgreen !important;
+	text-decoration: none !important;
+}
+
+.training_block p{
+	/*padding-top: 1px;*/
+	color: lightgreen !important;
+	text-decoration: none !important;
+	margin-bottom: 0px;
+
+}
+.training_block:hover p span, .training_block:hover img{
+	text-decoration: underline;
+	color: lightgreen !important;
+}
+
+.challenge_blocks:hover{
+	text-decoration: none !important;
+}
+.challenge_symbol{
+	text-decoration: none !important;
+	padding: 0px;
+	margin: 0px;
+	cursor: default;
+	color: gray;
+	font-size: larger;
+}
+
+
+.edit_icon{
+	position: absolute;
+	right: 20px;
+	top: 2px;
+	display: none;
+	color: lightgreen !important;
+}
+
+.delete_icon{
+	top: 2px;
+	position: absolute; 
+	right: 2px; 
+	display: none;
+	color: lightgreen !important;
+}
+
+input[type=file]{
+
+	font-size: medium;
+}
+
+.challenge_title a{
+	color: white;
+	opacity: 1 !important;
+	z-index: -1;
+	display: none;
+}
+
+.challenge_title:hover img{
+	display: inline;
+}
+
