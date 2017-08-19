@@ -49,7 +49,7 @@ class TrainingWheelsShellClass():
 
 	def yes_faked(self, argument = None):
 		while( True ):
-			if argument = "":
+			if argument == "":
 				argument = "y"
 			sys.stdout.write( self.LessonBook.something_to_say_inbetween )
 			print(argument)
