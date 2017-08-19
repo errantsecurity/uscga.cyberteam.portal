@@ -220,9 +220,11 @@ input:focus{
 }
 
 #shell{
-
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	border: 0;
-	width: 95%;
+	width: 800px;
 	height: 500px;
 	padding: 10px;
 	background-color: black;
@@ -360,7 +362,7 @@ select{
 }
 
 .news_block{
-	
+
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
@@ -415,6 +417,25 @@ select{
 	font-size: larger;
 }
 
+textarea{
+	display: block;
+	width:100%;
+	/*background-color: red;*/
+	min-height: 100px;
+}
+
+#calendar{
+
+	box-shadow: 0px 0px 50px black;
+	border: 1px solid black;
+}
+
+#calendar:hover{
+
+	/*box-shadow: 0px 0px 50px black;*/
+	border: 1px solid skyblue;
+	cursor: pointer;
+}
 
 .edit_icon{
 	position: absolute;
@@ -447,4 +468,3 @@ input[type=file]{
 .challenge_title:hover img{
 	display: inline;
 }
-
