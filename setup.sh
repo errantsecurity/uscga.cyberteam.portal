@@ -17,3 +17,4 @@ fi
 
 sudo apt-get update && sudo apt-get -y $DEPENDENCIES
 
+python -c "Python works okay!"
