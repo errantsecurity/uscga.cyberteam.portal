@@ -43,7 +43,7 @@ function install_dependencies(){
 
 function build_training_wheels(){
 
-
+	echo "training wheels"
 }
 
 function configure_nginx(){
