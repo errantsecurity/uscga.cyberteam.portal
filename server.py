@@ -29,7 +29,7 @@ login_manager.init_app(app)
 login_manager.login_view = '/login'
 login_manager.login_message_category = 'warn'
 
-server_ip
+server_ip = ""
 
 def get_server_ip():
 	global server_ip
