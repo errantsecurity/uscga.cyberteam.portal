@@ -20,10 +20,10 @@
 			<h3> Welcome back to the Cyber Team! </h3>
 		</p>
 		<p>
-			This is a small set of challenges just to whet your appetite and get your head back in the game.
-			Please, don't consider it a competition -- you're not in it to win anything or race to the top.
-			The challenges here are meant to be simple, but still have enough quirks to remind you 'how to cyber'...
-			you know, think critically and research tools and techniques, and hopefully write some code.
+			This is a small set of challenges just to whet your appetite and get your head back in the game. 
+			Please, don't consider it a competition -- you're not in it to win anything or race to the top. 
+			The challenges here are meant to be simple, but still have enough quirks to remind you 'how to cyber'... 
+			you know, think critically and research tools and techniques, and hopefully write some code. 
 		</p>
 
 		<h2>Good luck and have fun!</h2>
@@ -39,11 +39,12 @@
 				Not just a musical! Connect to the service running on <code>10.6.1.7</code>, port <code>3887.</code>
 				</p>
 				<p>
-				<small> Don't know this means? <a href='http://lmgtfy.com/?q=net+cat'>Trying Googling what `cats` can be on the net!</a></small>
+				<small> Don't know what this means? <a href='http://lmgtfy.com/?q=net+cat'>Trying Googling what `cats` can be on the net!</a></small>
 				</p>
 			",
 
 			"possible_answers": [ "USCGA{netcat_is_the_best_cat}" ],
+
 			"points" : 5
 		},
 
@@ -55,6 +56,7 @@
 				",
 
 			"possible_answers": [ "USCGA{wait_this_is_irc_not_the_irs}" ],
+			"downloadable_files" : ["2018_start/irs.pcap"],
 			"points" : 20
 		},
 		{
@@ -216,7 +218,45 @@ Access to all the latest modules, hot off the press! What can <i>you</i> access?
 				
 			"possible_answers": [ "USCGA{htaccess_can_control_what_you_access}" ],
 			"points" : 40
-		}
+		},
+		{
+			"title": "HexHax",
 
+			"prompt": "
+			<p>
+We lost the output file that should have been attached to this challenge; you'll have to recreate it yourself! The contents of the file start like this:
+</p>
+<p style='text-align:center'>
+	<code>0138BCDE1011113...</code>
+</p>
+<p>
+It's a single line of numbers and uppercase letters.
+
+It was created by taking all the hexidecimal numbers from 0 through F4240, inclusive, stringing them all together in a row, and keeping only the characters that have horizontal symmetry.
+</p><p>
+	<b> The flag is the first 20 characters of the lowercase hexidecimal MD5 hash of this output file, wrapped in the usual <code>USCGA{}</code> 
+	</b>
+</p>
+				",
+				
+			"possible_answers": [ "USCGA{510ccb29bb808b6e3a43}" ],
+			"points" : 50
+		},
+
+		{
+			"title": "Gammer",
+
+			"prompt": "
+			<p>
+			It's only one letter away!
+			</p>
+			<p>
+			<code> nc 10.6.1.18 2885</code>
+			</p>
+				",
+				
+			"possible_answers": [ "USCGA{bruteforce_with_a_hammer}" ],
+			"points" : 75
+		}
 	]
 }
