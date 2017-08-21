@@ -544,18 +544,39 @@ def delete_challenge( challenge_id ):
 
 	return  flask.redirect(flask.request.referrer)
 
-@app.route('/writeups/edit/<int:writeup_id>', methods = [ "GET", "POST" ])
+@app.route('/writeups/edit/<int:training_id>/<int:challenge_id>/', methods = [ "GET", "POST" ])
 @flask_login.login_required
-def edit_writeup(writeup_id):
+def new_edit_writeup( training_id, challenge_id):
+	name = ""
+	author = flask_login.current_user.name
+	association = ""
+	content = ""
+	writeup_id = create_new_writeup( name, author, association, content )
 
+	# # cursor = flask.g.db.execute('SELECT name, author, association, body FROM writeups WHERE id = (?)', [ writeup_id] )
+	# response =  cursor.fetchone()
+	# if response == None: 
+	# 	flask.flash("Writeup not found!", "error")
+	# 	return flask.redirect(flask.url_for('specific_writeup', id = writeup_id))
+	# else:
+	# 	name, author, association, content = response
 
-	cursor = flask.g.db.execute('SELECT name, author, association, body FROM writeups WHERE id = (?)', [ writeup_id] )
-	response =  cursor.fetchone()
-	if response == None: 
-		flask.flash("Writeup not found!", "error")
-		return flask.redirect(flask.url_for('specific_writeup', id = writeup_id))
-	else:
-		name, author, association, content = response
+	# 	cursor = flask.g.db.execute("SELECT name, association FROM challenges WHERE id = (?)", [ association ])
+	# 	response = cursor.fetchone()
+	# 	if response: challenge_name, training_id = response
+	# 	else:
+	# 		challenge_name = "<b style='color:red'> ERROR </b>"
+	# 		training_id = None
+		
+	# 	cursor = flask.g.db.execute("SELECT name FROM training WHERE id = (?)", [ training_id ])
+	# 	response = cursor.fetchone()
+	# 	if response: training_name = response[0]
+	# 	else: training_name = "<b style='color:red'> ERROR </b>"
+		
+	# 	if training_id == None:
+	# 		print "="*80
+	# 		print "NEW WRITEUP NEEDS TO BE UNDERSTOOD"
+	# 		print "="*80
 
 	if ( flask_login.current_user.name not in author  ):
 		flask.flash("You are not the author of this writeup, you cannot edit it!", 'error')
@@ -589,7 +610,72 @@ def edit_writeup(writeup_id):
 	response = cursor.fetchall()
 	possible_associations = [ { "name": row[0] } for row in response ]
 
-	return flask.render_template('edit_writeup.html', possible_associations = possible_associations, name = name, association = association, content = content, writeup_id = writeup_id )
+	return flask.render_template('edit_writeup.html', possible_associations = possible_associations, name = name, association = association, content = content, writeup_id = writeup_id, training_id = training_id, challenge_id = challenge_id, )
+
+@app.route('/writeups/edit/<int:writeup_id>/training_id/', methods = [ "GET", "POST" ])
+@flask_login.login_required
+def edit_writeup(writeup_id):
+
+
+	cursor = flask.g.db.execute('SELECT name, author, association, body FROM writeups WHERE id = (?)', [ writeup_id] )
+	response =  cursor.fetchone()
+	if response == None: 
+		flask.flash("Writeup not found!", "error")
+		return flask.redirect(flask.url_for('specific_writeup', id = writeup_id))
+	else:
+		name, author, association, content = response
+
+		cursor = flask.g.db.execute("SELECT name, association FROM challenges WHERE id = (?)", [ association ])
+		response = cursor.fetchone()
+		if response: challenge_name, training_id = response
+		else:
+			challenge_name = "<b style='color:red'> ERROR </b>"
+			training_id = None
+		
+		cursor = flask.g.db.execute("SELECT name FROM training WHERE id = (?)", [ training_id ])
+		response = cursor.fetchone()
+		if response: training_name = response[0]
+		else: training_name = "<b style='color:red'> ERROR </b>"
+		
+		if training_id == None:
+			print "="*80
+			print "NEW WRITEUP NEEDS TO BE UNDERSTOOD"
+			print "="*80
+
+	if ( flask_login.current_user.name not in author  ):
+		flask.flash("You are not the author of this writeup, you cannot edit it!", 'error')
+		return flask.redirect( flask.url_for( 'writeups') )
+
+	if ( flask.request.method == "POST" ):
+
+		# Retrieve the passed values...
+		name = flask.request.form['name']
+		association = flask.request.form['association']
+		content = flask.request.form['content']
+		html_content = markdown.markdown(content)
+
+		# Error check...
+		if ( name == "" ): 
+			flask.flash("You must supply a name for this writeup!", "error")
+		elif ( content == "" ):
+			flask.flash("You must enter some content for the writeup!", "error")
+		elif ( association == "" ):
+			flask.flash("You must select an association for this writeup!", "error")
+		else:
+
+		# Process the input...
+			flask.flash("Writeup saved!", "success")
+			cursor = flask.g.db.execute('UPDATE writeups SET name = (?), association = (?), body = (?) WHERE id = (?)', 
+				[ name, association, content, writeup_id ])
+
+			flask.g.db.commit()
+
+	cursor = flask.g.db.execute("SELECT name FROM training")
+	response = cursor.fetchall()
+	possible_associations = [ { "name": row[0] } for row in response ]
+
+	# return flask.render_template('edit_writeup.html', possible_associations = possible_associations, name = name, association = association, content = content, writeup_id = writeup_id )
+	return flask.render_template('new_edit_writeup.html', possible_associations = possible_associations, name = name, association = association, content = content, writeup_id = writeup_id )
 
 @app.route('/challenge/edit/<int:challenge_id>', methods = [ "GET", "POST" ])
 @flask_login.login_required
@@ -690,6 +776,22 @@ def writeups():
 	cursor = flask.g.db.execute("SELECT name, author, association, id FROM writeups ORDER BY id DESC")
 	response = cursor.fetchall()
 	writeups = [ { "name": row[0], "author": row[1], "association": row[2], "id": row[3] } for row in response ]
+
+	# for writeup in writeups:
+	# 	association = writeup['association']
+	# 	cursor = flask.g.db.execute("SELECT name, association FROM challenges WHERE id = (?)", [ association ])
+	# 	response = cursor.fetchone()
+	# 	if response: challenge_name, training_id = response
+	# 	else: challenge_name = "<b style='color:red'> ERROR </b>"
+		
+	# 	cursor = flask.g.db.execute("SELECT name FROM training WHERE id = (?)", [ training_id ])
+	# 	response = cursor.fetchone()
+	# 	if response: training_name = response[0]
+	# 	else: training_name = "<b style='color:red'> ERROR </b>"
+		
+	# 	writeup['challenge_name'] = challenge_name
+	# 	writeup['training_name'] = training_name
+
 
 	return flask.render_template('writeups.html', writeups = writeups)
 
