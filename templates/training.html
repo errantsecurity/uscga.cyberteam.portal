@@ -20,7 +20,7 @@
 
 				<h3 class="challenge_title" style="position:relative;"> {{ challenge.name | safe }} <span> 
 
-					<!-- <a href="{{url_for('new_edit_writeup', training_id = training_id, challenge_id = challenge.id)}}" class="create_writeup">Create Writeup</a> -->
+					<a href="{{url_for('new_writeup', training_id = training_id, challenge_id = challenge.id)}}" class="create_writeup">Create Writeup</a>
 
 					{{ challenge.points }}
 					</span>
