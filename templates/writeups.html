@@ -20,19 +20,17 @@ explain how their solution works.
 		<table id="scoreboard">
 		<tr>
 			<th align="left; text-align:center;"> # </th>
-			<th align="left">&nbsp; Name </th>
+			<th align="left">&nbsp; Challenge </th>
 			<th> Author </th>
-			<th> Challenge </th>
-			<th> Association </th>
+			<th> Training </th>
 		</tr>
 
 		{% for writeup in writeups  %}
 
 			<tr onclick="window.document.location ='/writeups/{{writeup['id']}}'" >
 				<td style="text-align: center; opacity: 0.3">{{ loop.index }} </td>
-				<td style="text-indent: 10px;"> {{ writeup["name"] }} </td>
+				<td style="text-indent: 10px;"> {{ writeup["challenge_name"] }} </td>
 				<td style="text-align: center"> {{ writeup[ "author" ] }} </td>
-				<td style="text-align: center; position: relative;"> {{ writeup[ "challenge_name" ] }} </td>
 				<td style="text-align: center; position: relative;"> {{ writeup[ "training_name" ] }}
 					<a href="{{url_for('edit_writeup', writeup_id=writeup['id'])}}"  class="edit_icon">
 						<img src="{{url_for('static', filename='img/edit_icon.png')}}" width="15px">
