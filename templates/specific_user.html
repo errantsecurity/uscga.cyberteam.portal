@@ -2,6 +2,11 @@
 {% block content %}
 
 	<h1> {{ user.name }}</h1>
+	<span style="position:relative;top:-50px;float:right;">
+		<a style="color:red;" href="{{url_for('reset_password')}}">Reset Password</a>
+		</span>
+
+
 	<p>
 		Overall Score: {{user.score}}
 	</p>

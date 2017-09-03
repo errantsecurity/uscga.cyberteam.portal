@@ -32,7 +32,7 @@ login_manager.login_message_category = 'warn'
 server_ip = ""
 
 # Kick-start the Training Wheels shell
-subprocess.Popen( str('gotty -w --reconnect -p 9000 docker run -it training_wheels').split() )
+#subprocess.Popen( str('gotty -w --reconnect -p 9000 docker run -it training_wheels').split() )
 
 def get_server_ip():
 	global server_ip
@@ -232,6 +232,51 @@ def register():
 	
 	# As a catch-all, just return the page as necessary.
 	return flask.render_template( "register.html", email=email, confirm=confirm, password=password )
+
+@flask_login.login_required
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_password():
+	
+	old_password = ""
+	new_password = ""
+	confirm_new_password = ""
+
+	if ( flask.request.method == "GET" ):
+		return flask.render_template( 'reset_password.html', old_password = old_password, new_password = new_password, confirm_new_password = confirm_new_password)
+
+	if ( flask.request.method == "POST" ):
+
+		# Grab the variables sent by the form POST...
+		old_password = flask.request.form['old_password']
+		new_password = flask.request.form['new_password']
+		confirm_new_password = flask.request.form['confirm_new_password']
+
+		# Get the users that already exist in the database...
+		registered_emails = get_registered_emails()
+		cursor = flask.g.db.execute('SELECT password FROM users WHERE id = (?)', [flask_login.current_user.id])
+		response = cursor.fetchone()
+		if not response:
+			flask.flash("Your user ID is not in the database!", 'error')
+			return flask.redirect( flask.url_for('index') )
+		else:
+			old_hashed_password = response[0]
+			if not ( sha256_crypt.verify( flask.request.form['old_password'], old_hashed_password ) ):
+				flask.flash("That is the incorrect old password!",'error')
+				return flask.render_template( 'reset_password.html', old_password = old_password, new_password = new_password, confirm_new_password = confirm_new_password)
+			else:
+
+				if ( new_password != confirm_new_password ):
+					flask.flash("Your new password and confirmation do not match!", 'error')
+					return flask.render_template( 'reset_password.html', old_password = old_password, new_password = new_password, confirm_new_password = confirm_new_password)
+				else:
+
+					if not flask.get_flashed_messages():
+						flask.g.db.execute('UPDATE users SET password = (?) WHERE id = (?)',
+							[ sha256_crypt.encrypt( flask.request.form['new_password'] ), flask_login.current_user.id ])
+						flask.g.db.commit()
+
+						flask.flash("Password has been reset successfully!", 'success')
+						return flask.redirect( flask.url_for('specific_user', user_id = flask_login.current_user.id) )	
 
 
 # -------------------------------------------------------------------------------------
@@ -702,22 +747,7 @@ def writeups():
 
 	cursor = flask.g.db.execute("SELECT name, author, association, id FROM writeups ORDER BY id DESC")
 	response = cursor.fetchall()
-	writeups = [ { "name": row[0], "author": row[1], "association": row[2], "id": row[3] } for row in response ]
-
-	# for writeup in writeups:
-	# 	association = writeup['association']
-	# 	cursor = flask.g.db.execute("SELECT name, association FROM challenges WHERE id = (?)", [ association ])
-	# 	response = cursor.fetchone()
-	# 	if response: challenge_name, training_id = response
-	# 	else: challenge_name = "<b style='color:red'> ERROR </b>"
-		
-	# 	cursor = flask.g.db.execute("SELECT name FROM training WHERE id = (?)", [ training_id ])
-	# 	response = cursor.fetchone()
-	# 	if response: training_name = response[0]
-	# 	else: training_name = "<b style='color:red'> ERROR </b>"
-		
-	# 	writeup['challenge_name'] = challenge_name
-	# 	writeup['training_name'] = training_name
+	writeups = [ { "challenge_name": row[0], "author": row[1], "training_name": row[2], "id": row[3] } for row in response ]
 
 
 	return flask.render_template('writeups.html', writeups = writeups)
