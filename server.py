@@ -32,7 +32,7 @@ login_manager.login_message_category = 'warn'
 server_ip = ""
 
 # Kick-start the Training Wheels shell
-#subprocess.Popen( str('gotty -w --reconnect -p 9000 docker run -it training_wheels').split() )
+subprocess.Popen( str('gotty -w --address 10.50.50.9 --reconnect -p 9000 docker run -it training_wheels').split() )
 
 def get_server_ip():
 	global server_ip
@@ -146,7 +146,7 @@ def user_login( email ):
 	turn_on_user_virtual_machine()
 
 def turn_on_user_virtual_machine():
-	subprocess.Popen( str('gotty -w -p ' + str(8080 + flask_login.current_user.id) + ' ' + os.path.join(os.getcwd(), 'run_vm.sh') + ' ' + flask_login.current_user.vm_path ).split(), cwd = flask_login.current_user.vm_path )
+	subprocess.Popen( str('gotty --address 10.50.50.9 -w -p ' + str(8080 + flask_login.current_user.id) + ' ' + os.path.join(os.getcwd(), 'run_vm.sh') + ' ' + flask_login.current_user.vm_path ).split(), cwd = flask_login.current_user.vm_path )
 
 
 @login_manager.user_loader
@@ -204,7 +204,7 @@ def register():
 		# Start to errorcheck.
 		if email == "": flask.flash("You must supply an email address!", "error")
 		elif unicode(email) in registered_emails: flask.flash("This e-mail address is already registered!", "error")
-		elif (not email.endswith('@uscga.edu')): flask.flash('You must use a @uscga.edu domain e-mail address!', "error")
+		# elif (not email.endswith('@uscga.edu')): flask.flash('You must use a @uscga.edu domain e-mail address!', "error")
 		elif password == "": flask.flash("You must supply a password!", "error")
 		elif password != confirm: flask.flash("Your passwords do not match!", "error")
 

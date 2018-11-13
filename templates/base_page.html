@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title> USCGA Portal</title>
+	<title> Errant Security Portal</title>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/master.css')}}">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
 	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js' ) }}"></script>
@@ -41,7 +41,7 @@
 				</ul>
 			</div>
 			<div id="stats">
-				You are visiting from {{request.environ['REMOTE_ADDR']}}.
+				Portal by <a href="https://github.com/JohnHammond/uscga.cyberteam.portal"> lazzarus</a></br>You are visiting from {{request.environ['REMOTE_ADDR']}}.
 			</div>
 		</div>
 		<div id="right_pane">

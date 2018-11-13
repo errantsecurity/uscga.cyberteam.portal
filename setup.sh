@@ -32,12 +32,12 @@ function install_dependencies(){
 	pip install flask_login
 
 	# Let brew configure itself
-	echo "" | brew
+	# echo "" | brew
 
-	# Have brew install gotty
-	su `logname` -c "brew install yudai/gotty/gotty"
-	export PATH=$PATH:$HOME/.linuxbrew/bin/
-	echo "export PATH=$PATH:$HOME/.linuxbrew/bin/" >> ~/.bashrc
+	# # Have brew install gotty
+	# su `logname` -c "brew install yudai/gotty/gotty"
+	# export PATH=$PATH:$HOME/.linuxbrew/bin/
+	# echo "export PATH=$PATH:$HOME/.linuxbrew/bin/" >> ~/.bashrc
 	
 }
 
@@ -49,7 +49,7 @@ function build_training_wheels(){
 
 function configure_nginx(){
 
-	sudo rm -f /etc/nginx/sites-enabled/default
+	# sudo rm -f /etc/nginx/sites-enabled/default
 	sudo touch /etc/nginx/sites-available/flask-settings
 	sudo ln -f -s /etc/nginx/sites-available/flask-settings \
 			   /etc/nginx/sites-enabled/flask-settings
@@ -66,53 +66,53 @@ EOF
 }
 
 
-function configure_docker(){
+# function configure_docker(){
 
-	# Add ourselves to the Docker group. We have to log back in and out
-	# to ensure we are running with the correct credentials..
-	usermod -aG docker `logname`
-	cd training_wheels
+# 	# Add ourselves to the Docker group. We have to log back in and out
+# 	# to ensure we are running with the correct credentials..
+# 	usermod -aG docker `logname`
+# 	cd training_wheels
 
-	docker build -t training_wheels .
+# 	docker build -t training_wheels .
 
-	cd ..
+# 	cd ..
 
 
-}
+# }
 
-function configure_gotty(){
-	cat <<EOF > ~/.gotty
-preferences {
-    font_size = 14
-}
-EOF
+# function configure_gotty(){
+# 	cat <<EOF > ~/.gotty
+# preferences {
+#     font_size = 14
+# }
+# EOF
 
-}
+# }
 
-function prepare_gunicorn(){
+# function prepare_gunicorn(){
 
-	cat <<EOF > /etc/init/the_portal.conf
-description "Gunicorn Flask server running the USCGA Cyber Team Portal."
+# 	cat <<EOF > /etc/init/the_portal.conf
+# description "Gunicorn Flask server running the USCGA Cyber Team Portal."
 
-start on runlevel [2345]
-stop on runlevel [!2345]
+# start on runlevel [2345]
+# stop on runlevel [!2345]
 
-respawn
-setuid user
-setgid www-data
+# respawn
+# setuid user
+# setgid www-data
 
-env PATH=/home/cyberteam/portal/
-chdir /home/cyberteam/portal
-exec gunicorn server:app
-EOF
+# env PATH=/home/cyberteam/portal/
+# chdir /home/cyberteam/portal
+# exec gunicorn server:app
+# EOF
 
-	# Make sure to run the app as a regular user. We shouldn't have to be
-	# root...
-	su `logname` -c "gunicorn server:app &"
-}
+# 	# Make sure to run the app as a regular user. We shouldn't have to be
+# 	# root...
+# 	su `logname` -c "gunicorn server:app &"
+# }
 
 install_dependencies
 configure_nginx
-configure_gotty
-configure_docker
-prepare_gunicorn
+# configure_gotty
+# configure_docker
+# prepare_gunicorn
